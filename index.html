@@ -99,7 +99,10 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 .aba{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--nevoa);font:600 16px var(--texto);padding:10px 4px;margin-right:22px;border-radius:0;cursor:pointer}
 .aba[aria-pressed="true"]{color:#0090d4;border-bottom-color:#0090d4}
 .abas{border-bottom:1px solid rgba(0,0,0,.08)}
-.campos{display:grid;grid-template-columns:1.2fr 1.2fr .8fr 1fr auto;gap:10px;align-items:end}
+.campos{display:grid;grid-template-columns:1.2fr 1.2fr .8fr auto;gap:10px;align-items:end}
+.busca-livre{margin:4px 0 14px}
+.busca-livre input{font-size:17px;padding:16px 18px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .campo{display:flex;flex-direction:column;gap:6px;min-width:0}
 .campo label{font:700 10.5px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
 .campo select,.campo input,.campo textarea{font:500 15px var(--texto);color:#111;background:#f2f7fa;border:1px solid rgba(0,0,0,.14);border-radius:10px;padding:12px;width:100%}
@@ -312,6 +315,7 @@ section.bloco{padding-block:96px}
           <button type="button" class="aba" data-fin="locacao" aria-pressed="false">Alugar</button>
           <button type="button" class="aba" data-fin="rural" aria-pressed="false">Rural</button>
         </div>
+        <div class="campo busca-livre"><label for="f-cod" class="sr">Buscar</label><input id="f-cod" type="search" placeholder="Busque por bairro, condomínio, cidade ou código do imóvel" autocomplete="off"></div>
         <div class="campos">
           <div class="campo"><label for="f-tipo">Tipo de imóvel</label>
             <select id="f-tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Apartamento</option><option>Lote</option><option>Chácara</option><option>Fazenda</option><option>Comercial</option></select></div>
@@ -319,7 +323,6 @@ section.bloco{padding-block:96px}
             <select id="f-regiao"><option value="">Todas as regiões</option><option>Plano Diretor Sul</option><option>Plano Diretor Norte</option><option>Taquaralto e Aurenys</option><option>Luzimangues</option><option>Condomínios no lago</option><option>Palmas</option><option>Área rural</option></select></div>
           <div class="campo"><label for="f-quartos">Quartos</label>
             <select id="f-quartos"><option value="0">Indiferente</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></div>
-          <div class="campo"><label for="f-cod">Código</label><input id="f-cod" placeholder="Ex.: CA0024" autocomplete="off"></div>
           <button class="btn btn-azul" type="submit">Buscar imóveis</button>
         </div>
       </form>
@@ -2081,9 +2084,12 @@ function inclina(el) {
 }
 function filtra() {
   const tipo = $("#f-tipo").value, reg = $("#f-regiao").value, q = +$("#f-quartos").value;
-  const cod = $("#f-cod").value.trim().toUpperCase().replace(/[\s-]/g, "");
+  // busca livre: bairro, condomínio, cidade, tipo ou código (sem ligar para acentos)
+  const sem = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const termos = sem($("#f-cod").value.trim()).split(/\s+/).filter(Boolean);
+  const casa = im => { const t = sem([im.cod, im.cod.replace("-", ""), im.titulo, im.local, im.regiao, im.tipo, ...(im.lista || [])].join(" ")); return termos.every(w => t.includes(w)); };
   return IMOVEIS.filter(im => (fin === "todos" || (fin === "rural" ? im.rural : im.fin === fin)) && (!tipo || im.tipo === tipo) &&
-    (!reg || im.regiao === reg) && (!q || (im.quartos || 0) >= q) && (!cod || im.cod.replace("-", "").includes(cod)));
+    (!reg || im.regiao === reg) && (!q || (im.quartos || 0) >= q) && (!termos.length || casa(im)));
 }
 function mostra() {
   const g = $("#grade"); g.textContent = "";
@@ -2127,6 +2133,7 @@ function marcaAba(v) { fin = v; limite = 8; document.querySelectorAll(".aba").fo
 document.querySelectorAll(".aba").forEach(b => b.addEventListener("click", () => marcaAba(b.dataset.fin)));
 document.querySelectorAll("[data-ir]").forEach(a => a.addEventListener("click", () => marcaAba(a.dataset.ir)));
 $("#busca").addEventListener("submit", e => { e.preventDefault(); mostra(); irPara("#imoveis"); });
+$("#f-cod").addEventListener("input", () => { limite = 8; mostra(); });
 ["#f-tipo", "#f-regiao", "#f-quartos"].forEach(s => $(s).addEventListener("change", () => { limite = 8; mostra(); }));
 
 /* ---------- janelas ---------- */
