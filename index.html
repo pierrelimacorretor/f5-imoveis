@@ -1,10 +1,10 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="F5 Imóveis — compra, venda, locação e imóveis rurais em Palmas e no Tocantins. CRECI J-5434.">
-<meta property="og:title" content="F5 Imóveis — Atualizando a sua vida">
+<meta property="og:title" content="F5 Imóveis — Atualizando sua vida">
 <meta property="og:description" content="Compra, venda, locação e imóveis rurais em Palmas e no Tocantins. CRECI J-5434.">
 <meta property="og:image" content="https://f5imoveistocantins.com.br/capa.jpg"><meta property="og:type" content="website">
-<link rel="icon" href="fotos/logo-f5-escuro.png"></head><body>
-<title>F5 Imóveis · Atualizando a sua vida</title>
+<link rel="icon" href="fotos/logo-f5-preto-branco.png"></head><body>
+<title>F5 Imóveis · Atualizando sua vida</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
@@ -12,19 +12,25 @@
 /* Layout: filme de marca — abertura com voo de drone e cortina de cinema, faixa de chamadas, vitrine escura,
    história da fazenda guiada pela rolagem, galeria horizontal da casa, manifesto que acende palavra por palavra */
 :root{
-  --noite:#06233a;       /* fundo: azul-marinho puxado do azul do logo */
-  --carvao:#041827;      /* azul bem escuro (texto sobre o azul) */
-  --placa:#0b3150;       /* superfície dos cartões */
-  --azul:#1babe3;        /* azul do logo */
-  --azul-luz:#6fd0f5;
-  --branco:#f5f8fa;
-  --nevoa:#a8c3d6;       /* texto secundário */
-  --linha:rgba(255,255,255,.10);
+  --noite:#00b4ff;       /* fundo: azul vivo da marca F5 */
+  --vivo:#00b4ff;        /* azul da marca (fixo) */
+  --carvao:#111111;      /* preto do F do logo */
+  --placa:#ffffff;       /* cartões brancos */
+  --azul:#ffffff;        /* destaque sobre o azul: branco, como o 5 do logo */
+  --azul-luz:#e6f7ff;
+  --branco:#111111;      /* texto principal (preto) */
+  --nevoa:#06364f;       /* texto secundário sobre o azul */
+  --linha:rgba(0,0,0,.16);
+  --btn:#111111; --btn-txt:#ffffff;
   --display:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --texto:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --raio:16px;
-  color-scheme:dark;
+  color-scheme:light;
 }
+/* áreas escuras (vídeo, fotos, rodapé): texto branco e destaque azul */
+.escuro,.historia,.faixa,.casa .capa,.janela .galeria,.janela .miniaturas{--branco:#ffffff;--nevoa:#c9d6de;--azul:var(--vivo);--linha:rgba(255,255,255,.14);--btn:var(--vivo);--btn-txt:#111;color:#fff}
+/* superfícies brancas: texto preto e destaque azul */
+.card,.srv div,.form,.busca,.janela .caixa{--branco:#111111;--nevoa:#55646d;--azul:var(--vivo);--linha:rgba(0,0,0,.10);color:#111}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--noite);color:var(--branco);font:16px/1.6 var(--texto);overflow-x:hidden}
@@ -37,26 +43,26 @@ img,video,canvas{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;letter-spacing:-.01em}
 .wrap{max-width:1220px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .olho{font:700 12px/1 var(--display);letter-spacing:.26em;text-transform:uppercase;color:var(--azul)}
-.olho.slogan{display:inline-block;font-size:13px;color:var(--carvao);background:var(--azul);padding:9px 16px;border-radius:999px;box-shadow:0 8px 26px rgba(27,171,227,.35)}
-:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+.olho.slogan{display:inline-block;font-size:13px;color:#fff;background:#111;padding:9px 16px;border-radius:999px;box-shadow:0 8px 26px rgba(0,0,0,.25)}
+:focus-visible{outline:3px solid #111;outline-offset:3px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 24px;font:700 13px var(--display);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn-azul{background:var(--azul);color:var(--carvao);box-shadow:0 10px 30px rgba(27,171,227,.28)}
-.btn-azul:hover{background:var(--azul-luz)}
-.btn-vidro{background:rgba(255,255,255,.08);color:var(--branco);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);backdrop-filter:blur(10px)}
+.btn-azul{background:var(--btn);color:var(--btn-txt);box-shadow:0 10px 26px rgba(0,0,0,.22)}
+.btn-azul:hover{filter:brightness(1.15)}
+.btn-vidro{background:rgba(255,255,255,.14);color:var(--branco);box-shadow:inset 0 0 0 1.5px currentColor;backdrop-filter:blur(10px)}
 
 /* topo */
 .topo{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-.topo.solido{background:rgba(6,35,58,.86);backdrop-filter:blur(14px);border-color:var(--linha)}
+.topo.solido{background:rgba(0,180,255,.94);backdrop-filter:blur(14px);border-color:var(--linha)}
 .topo .wrap{display:flex;align-items:center;gap:22px;min-height:78px}
 .topo .marca img{height:46px;width:auto}
 .menu{display:flex;gap:24px;margin-left:auto;font:600 13px var(--display);letter-spacing:.08em;text-transform:uppercase}
 .menu a{text-decoration:none;opacity:.82;transition:opacity .2s,color .2s}
 .menu a:hover{opacity:1;color:var(--azul)}
-.som{display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid rgba(255,255,255,.25);color:var(--branco);border-radius:999px;padding:9px 14px;font:700 11px var(--display);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.som{display:inline-flex;align-items:center;gap:10px;background:none;border:1.5px solid rgba(0,0,0,.45);color:var(--branco);border-radius:999px;padding:9px 14px;font:700 11px var(--display);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
 .som .eq{display:flex;gap:2px;align-items:flex-end;height:14px}
-.som .eq i{width:3px;height:4px;background:var(--azul);border-radius:2px}
+.som .eq i{width:3px;height:4px;background:#111;border-radius:2px}
 .som[aria-pressed="true"] .eq i{animation:eq .9s ease-in-out infinite}
 .som .eq i:nth-child(2){animation-delay:.15s}.som .eq i:nth-child(3){animation-delay:.3s}.som .eq i:nth-child(4){animation-delay:.45s}
 @keyframes eq{0%,100%{height:4px}50%{height:14px}}
@@ -66,8 +72,9 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 .abre{position:relative;min-height:min(100vh,900px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .abre video,.abre .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .abre::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(90deg,rgba(6,35,58,.88) 0%,rgba(6,35,58,.55) 45%,rgba(6,35,58,.1) 100%),
-  linear-gradient(0deg,rgba(6,35,58,1) 0%,rgba(6,35,58,.2) 38%,rgba(6,35,58,.35) 100%)}
+  linear-gradient(90deg,rgba(0,180,255,.97) 0%,rgba(0,180,255,.9) 38%,rgba(0,180,255,.25) 72%,rgba(0,180,255,0) 100%),
+  linear-gradient(0deg,rgba(0,180,255,1) 0%,rgba(0,180,255,0) 30%)}
+@media (max-width:760px){.abre::before{background:linear-gradient(0deg,rgba(0,180,255,1) 0%,rgba(0,180,255,.9) 55%,rgba(0,180,255,.55) 100%)}}
 .cortina{position:absolute;left:0;right:0;height:50%;background:#000;z-index:5;pointer-events:none;animation:abre-cortina 1.5s cubic-bezier(.7,0,.2,1) .25s forwards}
 .cortina.c1{top:0}.cortina.c2{bottom:0}
 @keyframes abre-cortina{to{height:0}}
@@ -75,27 +82,27 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 .abre h1{font-weight:900;font-size:clamp(42px,7.4vw,104px);text-transform:uppercase;max-width:12.5ch;line-height:.95}
 .abre h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
 .abre h1 .ln > span{display:inline-block}
-.abre h1 .azul{color:var(--azul);text-shadow:0 0 40px rgba(27,171,227,.45)}
-.abre p.sub{max-width:48ch;margin:22px 0 0;font-size:clamp(16px,1.6vw,19px);color:#d9e2e8}
-.rolar{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:60px;font:700 11px var(--display);letter-spacing:.3em;text-transform:uppercase;color:var(--nevoa);writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
-.rolar::after{content:"";width:1px;height:60px;background:linear-gradient(var(--azul),transparent);animation:desce 1.8s ease-in-out infinite}
+.abre h1 .azul{color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.12)}
+.abre p.sub{max-width:48ch;margin:22px 0 0;font-size:clamp(16px,1.6vw,19px);color:#0b2f42;font-weight:500}
+.rolar{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:60px;font:700 11px var(--display);letter-spacing:.3em;text-transform:uppercase;color:#fff;writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
+.rolar::after{content:"";width:1px;height:60px;background:linear-gradient(#fff,transparent);animation:desce 1.8s ease-in-out infinite}
 @keyframes desce{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 @media (max-width:700px){.rolar{display:none}}
 
 /* busca */
-.busca{margin-top:34px;background:rgba(6,35,58,.62);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);border-radius:var(--raio);padding:16px;max-width:1000px}
+.busca{margin-top:34px;background:#fff;box-shadow:0 24px 60px rgba(0,60,90,.28);border:0;border-radius:var(--raio);padding:16px;max-width:1000px}
 .abas{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
 .aba{border:0;background:transparent;color:var(--nevoa);font:700 12px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;cursor:pointer}
-.aba[aria-pressed="true"]{background:var(--azul);color:var(--carvao)}
+.aba[aria-pressed="true"]{background:#111;color:#fff}
 .campos{display:grid;grid-template-columns:1.2fr 1.2fr .8fr 1fr auto;gap:10px;align-items:end}
 .campo{display:flex;flex-direction:column;gap:6px;min-width:0}
 .campo label{font:700 10.5px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
-.campo select,.campo input,.campo textarea{font:500 15px var(--texto);color:var(--branco);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px;width:100%}
+.campo select,.campo input,.campo textarea{font:500 15px var(--texto);color:#111;background:#f2f7fa;border:1px solid rgba(0,0,0,.14);border-radius:10px;padding:12px;width:100%}
 .campo select option{color:#111}
 @media (max-width:860px){.campos{grid-template-columns:1fr 1fr}.campos .btn{grid-column:1/-1}}
 
 /* faixa corrida */
-.faixa{border-block:1px solid var(--linha);overflow:hidden;padding-block:18px;background:var(--carvao)}
+.faixa{border-block:1px solid var(--linha);overflow:hidden;padding-block:18px;background:#111}
 .faixa .trilho{display:flex;width:max-content;animation:corre 38s linear infinite}
 .faixa span{font:900 clamp(20px,3vw,34px) var(--display);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;padding-right:42px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
 .faixa span:nth-child(even){color:var(--azul);-webkit-text-stroke:0}
@@ -112,17 +119,18 @@ section.bloco{padding-block:96px}
 /* cartões */
 .grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
 .card{position:relative;background:var(--placa);border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha);display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;transform-style:preserve-3d;transition:box-shadow .3s,border-color .3s}
-.card:hover{border-color:rgba(27,171,227,.5);box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 1px rgba(27,171,227,.25)}
-.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(27,171,227,.16),transparent 45%);opacity:0;transition:opacity .3s}
+.card{box-shadow:0 14px 34px rgba(0,60,90,.18)}
+.card:hover{border-color:#111;box-shadow:0 30px 60px rgba(0,60,90,.35)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(0,180,255,.14),transparent 45%);opacity:0;transition:opacity .3s}
 .card:hover::after{opacity:1}
 .mais{grid-column:1/-1;justify-self:center;margin-top:8px}
 .card .img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
 .card .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .card:hover .img img{transform:scale(1.07)}
 .etq{position:absolute;top:14px;left:14px;display:flex;gap:6px}
-.etq span{font:800 10.5px var(--display);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:var(--azul);color:var(--carvao)}
-.etq span.esc{background:rgba(6,35,58,.8);color:#fff;backdrop-filter:blur(6px)}
-.fotos-n{position:absolute;right:12px;bottom:12px;font:700 11px var(--display);letter-spacing:.06em;color:#fff;background:rgba(6,35,58,.72);padding:6px 10px;border-radius:999px}
+.etq span{font:800 10.5px var(--display);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:var(--vivo);color:#111}
+.etq span.esc{background:rgba(17,17,17,.85);color:#fff;backdrop-filter:blur(6px)}
+.fotos-n{position:absolute;right:12px;bottom:12px;font:700 11px var(--display);letter-spacing:.06em;color:#fff;background:rgba(17,17,17,.72);padding:6px 10px;border-radius:999px}
 .card .corpo{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
 .preco{font:800 22px var(--display)}
 .preco small{font:600 13px var(--texto);color:var(--nevoa)}
@@ -131,7 +139,7 @@ section.bloco{padding-block:96px}
 .specs{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:auto;padding-top:14px;border-top:1px solid var(--linha);font-size:14px;color:var(--nevoa)}
 .specs b{color:var(--branco);font-family:var(--display)}
 .cod{font:700 10.5px var(--display);letter-spacing:.18em;color:var(--nevoa)}
-.card.anuncie{background:linear-gradient(160deg,#1b3a4a,var(--placa) 60%);justify-content:center;padding:30px;gap:14px;cursor:default}
+.card.anuncie{background:#111;--branco:#fff;--nevoa:#c9d6de;--btn:var(--vivo);--btn-txt:#111;color:#fff;justify-content:center;padding:30px;gap:14px;cursor:default}
 .card.anuncie h3{font-size:26px;font-weight:900;text-transform:uppercase}
 .card.anuncie p{margin:0;color:#cfd8de}
 .vazio{grid-column:1/-1;padding:28px;border:1px dashed var(--linha);border-radius:var(--raio);color:var(--nevoa);text-align:center}
@@ -147,9 +155,9 @@ section.bloco{padding-block:96px}
 .passos{position:absolute;left:0;right:0;bottom:12vh;z-index:2}
 .passo{position:absolute;left:0;right:0;bottom:0;opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
 .passo.on{opacity:1;transform:none}
-.passo .num{font:900 clamp(64px,13vw,190px)/.9 var(--display);letter-spacing:-.02em;background:linear-gradient(180deg,#fff 40%,#9fdcf6);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 30px rgba(27,171,227,.35))}
+.passo .num{font:900 clamp(64px,13vw,190px)/.9 var(--display);letter-spacing:-.02em;background:linear-gradient(180deg,#fff 40%,#9fdcf6);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 30px rgba(0,180,255,.35))}
 .passo .tit{font:900 clamp(34px,6vw,84px)/.98 var(--display);text-transform:uppercase}
-.passo .rot{display:inline-block;margin-top:14px;font:800 clamp(13px,1.4vw,16px) var(--display);letter-spacing:.16em;text-transform:uppercase;background:var(--azul);color:var(--carvao);padding:9px 16px;border-radius:999px}
+.passo .rot{display:inline-block;margin-top:14px;font:800 clamp(13px,1.4vw,16px) var(--display);letter-spacing:.16em;text-transform:uppercase;background:var(--vivo);color:#111;padding:9px 16px;border-radius:999px}
 .passo .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 .historia.estatica{height:auto}
 .historia.estatica .palco{position:relative;height:auto;min-height:80vh}
@@ -162,17 +170,22 @@ section.bloco{padding-block:96px}
 .trilha-casa{display:flex;gap:22px;padding-left:max(16px,env(safe-area-inset-left,0px));width:max-content}
 .foto-casa{position:relative;flex:none;width:min(70vw,620px);aspect-ratio:4/5;border-radius:var(--raio);overflow:hidden;background:#000;margin:0}
 .foto-casa img{width:100%;height:100%;object-fit:cover}
-.foto-casa figcaption{position:absolute;left:16px;bottom:16px;font:800 13px var(--display);letter-spacing:.12em;text-transform:uppercase;background:rgba(6,35,58,.72);backdrop-filter:blur(6px);padding:9px 14px;border-radius:999px}
-.foto-casa.capa{width:min(86vw,820px);aspect-ratio:auto;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;background:linear-gradient(150deg,#1b3a4a,var(--placa));border:1px solid var(--linha)}
+.foto-casa figcaption{position:absolute;left:16px;bottom:16px;font:800 13px var(--display);letter-spacing:.12em;text-transform:uppercase;background:rgba(17,17,17,.72);color:#fff;backdrop-filter:blur(6px);padding:9px 14px;border-radius:999px}
+.foto-casa.capa{width:min(86vw,820px);aspect-ratio:auto;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;background:#111;border:1px solid var(--linha)}
 .foto-casa.capa h3{font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase}
 .foto-casa.capa ul{margin:16px 0 22px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;color:#d6dee3;font-size:15px}
 .foto-casa.capa li::before{content:"— ";color:var(--azul)}
 .casa.estatica .trilha-casa{width:auto;overflow-x:auto;padding-bottom:12px}
 @media (max-width:600px){.foto-casa.capa ul{grid-template-columns:1fr}}
 
+/* banner da chave */
+.chave-banner{padding-block:20px 10px}
+.chave-banner img{width:100%;height:auto;border-radius:var(--raio);transition:transform .4s}
+.chave-banner a:hover img{transform:scale(1.01)}
+
 /* serviços */
 .srv{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.srv div{display:flex;flex-direction:column;gap:12px;min-width:0;padding:26px;border:1px solid var(--linha);border-radius:var(--raio);background:var(--carvao)}
+.srv div{display:flex;flex-direction:column;gap:12px;min-width:0;padding:26px;border:0;border-radius:var(--raio);background:#fff;box-shadow:0 14px 34px rgba(0,60,90,.16)}
 .srv svg{width:44px;height:44px;stroke:var(--azul);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .srv h3{font-size:18px;font-weight:800}
 .srv p{margin:0;color:var(--nevoa);font-size:15px}
@@ -193,22 +206,22 @@ section.bloco{padding-block:96px}
 /* anuncie */
 .anuncie-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
 .anuncie-grid ul{padding:0;margin:20px 0 0;list-style:none;display:grid;gap:12px}
-.anuncie-grid li{display:flex;gap:12px;color:#d6dee3}
-.anuncie-grid li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:var(--azul) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1a1b' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
-.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--carvao);border:1px solid var(--linha);border-radius:var(--raio);padding:26px}
+.anuncie-grid li{display:flex;gap:12px;color:#111;font-weight:500}
+.anuncie-grid li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:var(--azul) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:#fff;box-shadow:0 24px 60px rgba(0,60,90,.22);border:0;border-radius:var(--raio);padding:26px}
 .form .full{grid-column:1/-1}
 .form textarea{min-height:96px;resize:vertical}
 .aviso{font-size:13px;color:var(--nevoa);margin:0}
 @media (max-width:860px){.anuncie-grid,.form{grid-template-columns:1fr}}
 
 /* rodapé */
-.rodape{border-top:1px solid var(--linha);padding-block:64px 34px;background:var(--carvao)}
-.rodape .gigante{font:900 clamp(60px,15vw,220px)/.85 var(--display);letter-spacing:-.03em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.18);margin-bottom:48px;white-space:nowrap;overflow:hidden}
+.rodape{border-top:1px solid var(--linha);padding-block:64px 34px;background:var(--noite)}
+.rodape .gigante{font:900 clamp(60px,15vw,220px)/.85 var(--display);letter-spacing:-.03em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.75);margin-bottom:48px;white-space:nowrap;overflow:hidden}
 .rodape .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
 .rodape img{height:66px;width:auto}
-.rodape h4{font:800 11px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+.rodape h4{font:800 11px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#111;margin:0 0 12px}
 .rodape p{margin:6px 0;color:var(--nevoa)}
-.rodape .fone{font:900 22px var(--display);color:#fff;user-select:all}
+.rodape .fone{font:900 22px var(--display);color:#111;user-select:all}
 .rodape .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--linha);font-size:13px;color:var(--nevoa);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 @media (max-width:760px){.rodape .cols{grid-template-columns:1fr}}
 
@@ -221,11 +234,11 @@ section.bloco{padding-block:96px}
 
 /* janelas */
 .janela{position:fixed;inset:0;z-index:95;background:rgba(5,6,7,.86);backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:calc(24px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
-.janela .caixa{background:var(--carvao);border:1px solid var(--linha);border-radius:18px;max-width:1080px;width:100%;overflow:hidden;position:relative}
+.janela .caixa{background:#fff;border:1px solid var(--linha);border-radius:18px;max-width:1080px;width:100%;overflow:hidden;position:relative}
 .fechar{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font:700 22px var(--display);cursor:pointer}
 .galeria{position:relative;background:#000;aspect-ratio:16/9;max-height:64vh;width:100%}
 .galeria img{width:100%;height:100%;object-fit:contain}
-.seta{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--carvao);font:800 20px var(--display);cursor:pointer}
+.seta{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#111;font:800 20px var(--display);cursor:pointer}
 .seta.esq{left:12px}.seta.dir{right:12px}
 .miniaturas{display:flex;gap:6px;padding:8px;overflow-x:auto;background:#000}
 .miniaturas button{flex:none;width:84px;height:60px;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;background:none}
@@ -233,9 +246,9 @@ section.bloco{padding-block:96px}
 .miniaturas img{width:100%;height:100%;object-fit:cover}
 .info{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;padding:26px}
 .info h2{font-size:clamp(24px,3vw,34px);font-weight:900;margin:8px 0 6px}
-.info ul{margin:16px 0 0;padding-left:20px;color:#d6dee3}
+.info ul{margin:16px 0 0;padding-left:20px;color:#2a3439}
 .info li{margin:4px 0}
-.lado{background:rgba(255,255,255,.04);border:1px solid var(--linha);border-radius:var(--raio);padding:20px;display:flex;flex-direction:column;gap:12px;align-self:start}
+.lado{background:#f2f7fa;border:1px solid var(--linha);border-radius:var(--raio);padding:20px;display:flex;flex-direction:column;gap:12px;align-self:start}
 .lado .specs{border-top:0;padding-top:0}
 .filme video{width:100%;background:#000;aspect-ratio:16/9}
 @media (max-width:760px){.info{grid-template-columns:1fr}}
@@ -249,7 +262,7 @@ section.bloco{padding-block:96px}
 
 <header class="topo" id="topo">
   <div class="wrap">
-    <a class="marca" href="#inicio" aria-label="F5 Imóveis, início"><img src="fotos/logo-f5-escuro.png" alt="F5 Imóveis"></a>
+    <a class="marca" href="#inicio" aria-label="F5 Imóveis, início"><img src="fotos/logo-f5-preto-branco.png" alt="F5 Imóveis"></a>
     <nav class="menu" aria-label="Menu principal">
       <a href="#imoveis" data-ir="venda">Comprar</a>
       <a href="#imoveis" data-ir="locacao">Alugar</a>
@@ -268,7 +281,7 @@ section.bloco{padding-block:96px}
     <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="midia/hero-poster.jpg" aria-label="Voo de drone sobre lavouras, rio e silos no Tocantins"><source src="midia/hero.mp4" type="video/mp4"></video>
     <div class="cortina c1"></div><div class="cortina c2"></div>
     <div class="wrap">
-      <p class="olho slogan">F5 · Atualizando a sua vida</p><p class="olho" style="margin-top:10px;color:var(--nevoa)">F5 Imóveis · Palmas – Tocantins · CRECI J-5434</p>
+      <p class="olho slogan">F5 · Atualizando sua vida</p><p class="olho" style="margin-top:10px;color:#0b2f42">F5 Imóveis · Palmas – Tocantins · CRECI J-5434</p>
       <h1 id="titulo" style="margin-top:18px"><span class="ln"><span>Mais que</span></span><span class="ln"><span>imóveis,</span></span><span class="ln"><span class="azul">realizamos</span></span><span class="ln"><span class="azul">histórias.</span></span></h1>
       <p class="sub">Compra, venda e locação de imóveis urbanos e rurais no Tocantins, com assessoria completa e segurança em cada etapa.</p>
 
@@ -295,8 +308,8 @@ section.bloco{padding-block:96px}
   </section>
 
   <div class="faixa" aria-hidden="true"><div class="trilho">
-    <span>F5 · Atualizando a sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
-    <span>F5 · Atualizando a sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
+    <span>F5 · Atualizando sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
+    <span>F5 · Atualizando sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
   </div></div>
 
   <section class="bloco" id="imoveis">
@@ -345,7 +358,11 @@ section.bloco{padding-block:96px}
     </div>
   </section>
 
-  <section class="bloco" id="servicos" style="background:var(--carvao);border-block:1px solid var(--linha)">
+  <section class="chave-banner" aria-label="F5, atualizando sua vida">
+    <div class="wrap"><a id="zap-banner" href="#" target="_blank" rel="noopener"><img src="fotos/banner-chave.jpg" alt="F5 Imóveis: atualizando sua vida. Entre em contato." loading="lazy"></a></div>
+  </section>
+
+  <section class="bloco" id="servicos" style="border-block:1px solid var(--linha)">
     <div class="wrap">
       <div class="cab revela"><div><p class="olho">Serviços</p><h2>O que a F5 faz por você</h2></div></div>
       <div class="srv">
@@ -370,7 +387,7 @@ section.bloco{padding-block:96px}
     </div>
   </section>
 
-  <section class="bloco" id="anuncie" style="background:var(--carvao);border-top:1px solid var(--linha)">
+  <section class="bloco" id="anuncie" style="border-top:1px solid var(--linha)">
     <div class="wrap anuncie-grid">
       <div class="revela">
         <p class="olho">Anuncie com a F5</p>
@@ -402,7 +419,7 @@ section.bloco{padding-block:96px}
   <div class="wrap">
     <div class="gigante" aria-hidden="true">F5 Imóveis</div>
     <div class="cols">
-      <div><img src="fotos/logo-f5-escuro.png" alt="F5 Imóveis"><p style="margin-top:16px;max-width:36ch">Ideal para você. Real para a vida. Imóveis urbanos e rurais em Palmas e região.</p></div>
+      <div><img src="fotos/logo-f5-preto-branco.png" alt="F5 Imóveis"><p style="margin-top:16px;max-width:36ch">Ideal para você. Real para a vida. Imóveis urbanos e rurais em Palmas e região.</p></div>
       <div>
         <h4>Fale com a F5</h4>
         <p class="fone">(63) 98460-6653</p>
@@ -411,7 +428,7 @@ section.bloco{padding-block:96px}
       </div>
       <div><h4>Onde estamos</h4><p>Palmas – Tocantins</p><p>Segunda a sexta, 8h às 18h<br>Sábado, 8h às 12h</p></div>
     </div>
-    <div class="base"><span>© 2026 F5 Imóveis · CRECI J-5434 · Palmas – TO</span><span>F5 · Atualizando a sua vida.</span></div>
+    <div class="base"><span>© 2026 F5 Imóveis · CRECI J-5434 · Palmas – TO</span><span>F5 · Atualizando sua vida.</span></div>
   </div>
 </footer>
 
@@ -2130,7 +2147,8 @@ $("#form-anuncie").addEventListener("submit", e => {
 });
 $("#zap").href = zap("Olá, F5! Vim pelo site e quero falar sobre imóveis.");
 $("#link-zap").href = $("#zap").href;
-$("#zap-casa").href = zap("Olá, F5! Quero agendar uma visita na casa da 303 Sul (CÓD. F5-002).");
+$("#zap-banner").href = $("#zap").href;
+$("#zap-casa").href = zap("Olá, F5! Quero agendar uma visita na casa da 303 Sul (CÓD. CA0024).");
 
 /* ---------- manifesto: palavras ---------- */
 const frase = $("#frase");
