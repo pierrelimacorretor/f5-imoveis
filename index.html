@@ -12,16 +12,16 @@
 /* Layout: filme de marca — abertura com voo de drone e cortina de cinema, faixa de chamadas, vitrine escura,
    história da fazenda guiada pela rolagem, galeria horizontal da casa, manifesto que acende palavra por palavra */
 :root{
-  --noite:#00b4ff;       /* fundo: azul vivo da marca F5 */
+  --noite:#ffffff;       /* fundo branco (estilo vitrine) */
   --vivo:#00b4ff;        /* azul da marca (fixo) */
   --carvao:#111111;      /* preto do F do logo */
   --placa:#ffffff;       /* cartões brancos */
-  --azul:#ffffff;        /* destaque sobre o azul: branco, como o 5 do logo */
+  --azul:#00a8f0;        /* destaque: azul da marca */
   --azul-luz:#e6f7ff;
   --branco:#111111;      /* texto principal (preto) */
-  --nevoa:#06364f;       /* texto secundário sobre o azul */
-  --linha:rgba(0,0,0,.16);
-  --btn:#111111; --btn-txt:#ffffff;
+  --nevoa:#5b6870;       /* texto secundário */
+  --linha:rgba(0,0,0,.10);
+  --btn:#0090d4; --btn-txt:#ffffff;
   --display:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --texto:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --raio:16px;
@@ -43,7 +43,7 @@ img,video,canvas{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;letter-spacing:-.01em}
 .wrap{max-width:1220px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .olho{font:700 12px/1 var(--display);letter-spacing:.26em;text-transform:uppercase;color:var(--azul)}
-.olho.slogan{display:inline-block;font-size:13px;color:#fff;background:#111;padding:9px 16px;border-radius:999px;box-shadow:0 8px 26px rgba(0,0,0,.25)}
+.olho.slogan{display:inline-block;font-size:13px;color:#111;background:var(--vivo);padding:9px 16px;border-radius:999px;box-shadow:0 8px 26px rgba(0,0,0,.25)}
 :focus-visible{outline:3px solid #111;outline-offset:3px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 24px;font:700 13px var(--display);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
@@ -53,37 +53,41 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 .btn-vidro{background:rgba(255,255,255,.14);color:var(--branco);box-shadow:inset 0 0 0 1.5px currentColor;backdrop-filter:blur(10px)}
 
 /* topo */
-.topo{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-.topo.solido{background:rgba(0,180,255,.94);backdrop-filter:blur(14px);border-color:var(--linha)}
+.topo{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;background:var(--vivo);box-shadow:0 4px 20px rgba(0,60,90,.18);transition:box-shadow .35s}
+.topo.solido{box-shadow:0 6px 26px rgba(0,60,90,.3)}
+.zap-topo{display:inline-flex;align-items:center;gap:8px;background:#0b8a4a;color:#fff;text-decoration:none;font:700 13px var(--display);letter-spacing:.04em;padding:11px 18px;border-radius:999px}
+.zap-topo svg{width:18px;height:18px}
+.zap-topo:hover{background:#097a41}
 .topo .wrap{display:flex;align-items:center;gap:22px;min-height:78px}
 .topo .marca img{height:46px;width:auto}
 .menu{display:flex;gap:24px;margin-left:auto;font:600 13px var(--display);letter-spacing:.08em;text-transform:uppercase}
 .menu a{text-decoration:none;opacity:.82;transition:opacity .2s,color .2s}
-.menu a:hover{opacity:1;color:var(--azul)}
+.menu a:hover{opacity:1;color:#fff}
 .som{display:inline-flex;align-items:center;gap:10px;background:none;border:1.5px solid rgba(0,0,0,.45);color:var(--branco);border-radius:999px;padding:9px 14px;font:700 11px var(--display);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
 .som .eq{display:flex;gap:2px;align-items:flex-end;height:14px}
 .som .eq i{width:3px;height:4px;background:#111;border-radius:2px}
 .som[aria-pressed="true"] .eq i{animation:eq .9s ease-in-out infinite}
 .som .eq i:nth-child(2){animation-delay:.15s}.som .eq i:nth-child(3){animation-delay:.3s}.som .eq i:nth-child(4){animation-delay:.45s}
 @keyframes eq{0%,100%{height:4px}50%{height:14px}}
-@media (max-width:980px){.menu{display:none}.topo .wrap{justify-content:space-between}}
+@media (max-width:980px){.menu{display:none}.topo .wrap{justify-content:space-between}.topo .marca{margin-right:auto}}
+@media (max-width:420px){.som{display:none}}
 
 /* abertura */
 .abre{position:relative;min-height:min(100vh,900px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .abre video,.abre .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .abre::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(90deg,rgba(0,180,255,.97) 0%,rgba(0,180,255,.9) 38%,rgba(0,180,255,.25) 72%,rgba(0,180,255,0) 100%),
-  linear-gradient(0deg,rgba(0,180,255,1) 0%,rgba(0,180,255,0) 30%)}
-@media (max-width:760px){.abre::before{background:linear-gradient(0deg,rgba(0,180,255,1) 0%,rgba(0,180,255,.9) 55%,rgba(0,180,255,.55) 100%)}}
+  linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.35) 50%,rgba(0,0,0,.12) 100%),
+  linear-gradient(0deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 40%)}
 .cortina{position:absolute;left:0;right:0;height:50%;background:#000;z-index:5;pointer-events:none;animation:abre-cortina 1.5s cubic-bezier(.7,0,.2,1) .25s forwards}
 .cortina.c1{top:0}.cortina.c2{bottom:0}
 @keyframes abre-cortina{to{height:0}}
 .abre .wrap{width:100%;padding-block:150px 54px}
-.abre h1{font-weight:900;font-size:clamp(42px,7.4vw,104px);text-transform:uppercase;max-width:12.5ch;line-height:.95}
+.abre h1{font-weight:800;font-size:clamp(40px,6vw,82px);max-width:15ch;line-height:1.02;letter-spacing:-.025em}
+.abre h1 .ln > span{white-space:normal}
 .abre h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
 .abre h1 .ln > span{display:inline-block}
-.abre h1 .azul{color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.12)}
-.abre p.sub{max-width:48ch;margin:22px 0 0;font-size:clamp(16px,1.6vw,19px);color:#0b2f42;font-weight:500}
+.abre h1 .azul{color:var(--vivo);text-shadow:0 4px 30px rgba(0,0,0,.25)}
+.abre p.sub{max-width:48ch;margin:22px 0 0;font-size:clamp(16px,1.6vw,19px);color:#e9f1f5;font-weight:500}
 .rolar{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:60px;font:700 11px var(--display);letter-spacing:.3em;text-transform:uppercase;color:#fff;writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
 .rolar::after{content:"";width:1px;height:60px;background:linear-gradient(#fff,transparent);animation:desce 1.8s ease-in-out infinite}
 @keyframes desce{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -92,14 +96,24 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 /* busca */
 .busca{margin-top:34px;background:#fff;box-shadow:0 24px 60px rgba(0,60,90,.28);border:0;border-radius:var(--raio);padding:16px;max-width:1000px}
 .abas{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
-.aba{border:0;background:transparent;color:var(--nevoa);font:700 12px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;cursor:pointer}
-.aba[aria-pressed="true"]{background:#111;color:#fff}
+.aba{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--nevoa);font:600 16px var(--texto);padding:10px 4px;margin-right:22px;border-radius:0;cursor:pointer}
+.aba[aria-pressed="true"]{color:#0090d4;border-bottom-color:#0090d4}
+.abas{border-bottom:1px solid rgba(0,0,0,.08)}
 .campos{display:grid;grid-template-columns:1.2fr 1.2fr .8fr 1fr auto;gap:10px;align-items:end}
 .campo{display:flex;flex-direction:column;gap:6px;min-width:0}
 .campo label{font:700 10.5px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
 .campo select,.campo input,.campo textarea{font:500 15px var(--texto);color:#111;background:#f2f7fa;border:1px solid rgba(0,0,0,.14);border-radius:10px;padding:12px;width:100%}
 .campo select option{color:#111}
 @media (max-width:860px){.campos{grid-template-columns:1fr 1fr}.campos .btn{grid-column:1/-1}}
+
+/* faixa de confiança */
+.confianca{background:#fff;border-bottom:1px solid var(--linha)}
+.confianca .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.confianca .wrap>div{padding:26px 18px;border-left:1px solid var(--linha);display:flex;flex-direction:column;gap:2px}
+.confianca .wrap>div:first-child{border-left:0;padding-left:0}
+.confianca b{font:800 20px var(--display);color:#111;letter-spacing:-.01em}
+.confianca span{font-size:14px;color:var(--nevoa)}
+@media (max-width:760px){.confianca .wrap{grid-template-columns:1fr 1fr}.confianca .wrap>div{border-left:0;padding-left:0}}
 
 /* faixa corrida */
 .faixa{border-block:1px solid var(--linha);overflow:hidden;padding-block:18px;background:#111}
@@ -111,19 +125,24 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 /* blocos */
 section.bloco{padding-block:96px}
 .cab{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:34px}
-.cab h2{font-size:clamp(30px,4.2vw,54px);font-weight:900;text-transform:uppercase;margin-top:12px}
+.cab h2{font-size:clamp(30px,3.8vw,48px);font-weight:800;letter-spacing:-.025em;margin-top:12px}
 .cab p{margin:10px 0 0;color:var(--nevoa);max-width:58ch}
 .contagem{font:600 13px var(--display);letter-spacing:.08em;color:var(--nevoa)}
 .revela{will-change:transform}
 
 /* cartões */
-.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.vertodos{display:inline-block;margin-top:22px;font:700 16px var(--display);color:#0090d4;text-decoration:none;background:none;border:0;padding:0;cursor:pointer}
+.vertodos:hover{text-decoration:underline}
+.categoria{padding-block:40px}
+.categoria h2{font-size:clamp(26px,3.2vw,40px);font-weight:800;letter-spacing:-.025em;margin-top:10px}
+.categoria .cab{margin-bottom:22px}
 .card{position:relative;background:var(--placa);border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha);display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;transform-style:preserve-3d;transition:box-shadow .3s,border-color .3s}
-.card{box-shadow:0 14px 34px rgba(0,60,90,.18)}
-.card:hover{border-color:#111;box-shadow:0 30px 60px rgba(0,60,90,.35)}
+.card{box-shadow:0 8px 24px rgba(0,60,90,.08)}
+.card:hover{border-color:var(--vivo);box-shadow:0 24px 50px rgba(0,120,180,.22)}
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(0,180,255,.14),transparent 45%);opacity:0;transition:opacity .3s}
 .card:hover::after{opacity:1}
-.mais{grid-column:1/-1;justify-self:center;margin-top:8px}
+.mais{grid-column:1/-1;justify-self:start;margin-top:4px}
 .card .img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
 .card .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .card:hover .img img{transform:scale(1.07)}
@@ -132,9 +151,9 @@ section.bloco{padding-block:96px}
 .etq span.esc{background:rgba(17,17,17,.85);color:#fff;backdrop-filter:blur(6px)}
 .fotos-n{position:absolute;right:12px;bottom:12px;font:700 11px var(--display);letter-spacing:.06em;color:#fff;background:rgba(17,17,17,.72);padding:6px 10px;border-radius:999px}
 .card .corpo{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
-.preco{font:800 22px var(--display)}
+.preco{font:800 22px var(--display);color:#0090d4;letter-spacing:-.01em}
 .preco small{font:600 13px var(--texto);color:var(--nevoa)}
-.card h3{font-size:18px;font-weight:800;line-height:1.25}
+.card h3{font-size:17px;font-weight:700;line-height:1.3;font-family:var(--texto)}
 .local{color:var(--nevoa);font-size:14px}
 .specs{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:auto;padding-top:14px;border-top:1px solid var(--linha);font-size:14px;color:var(--nevoa)}
 .specs b{color:var(--branco);font-family:var(--display)}
@@ -185,7 +204,7 @@ section.bloco{padding-block:96px}
 
 /* serviços */
 .srv{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.srv div{display:flex;flex-direction:column;gap:12px;min-width:0;padding:26px;border:0;border-radius:var(--raio);background:#fff;box-shadow:0 14px 34px rgba(0,60,90,.16)}
+.srv div{display:flex;flex-direction:column;gap:12px;min-width:0;padding:26px;border:0;border-radius:var(--raio);background:#fff;box-shadow:0 8px 24px rgba(0,60,90,.08)}
 .srv svg{width:44px;height:44px;stroke:var(--azul);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .srv h3{font-size:18px;font-weight:800}
 .srv p{margin:0;color:var(--nevoa);font-size:15px}
@@ -193,12 +212,12 @@ section.bloco{padding-block:96px}
 @media (max-width:520px){.srv{grid-template-columns:1fr}}
 
 /* manifesto */
-.manifesto .frase{font:900 clamp(34px,6.4vw,92px)/1.02 var(--display);text-transform:uppercase;max-width:16ch}
+.manifesto .frase{font:800 clamp(34px,6vw,84px)/1.04 var(--display);letter-spacing:-.03em;max-width:16ch}
 .manifesto .frase .p{opacity:.18;transition:opacity .2s}
 .manifesto .frase .p.acesa{opacity:1}
 .manifesto .frase .p.az{color:var(--azul)}
 .numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
-.numeros div{border-top:2px solid var(--azul);padding-top:16px}
+.numeros div{border-top:3px solid var(--vivo);padding-top:16px}
 .numeros b{display:block;font:900 clamp(26px,3vw,38px) var(--display)}
 .numeros span{font-size:14px;color:var(--nevoa)}
 @media (max-width:760px){.numeros{grid-template-columns:1fr 1fr}}
@@ -207,7 +226,7 @@ section.bloco{padding-block:96px}
 .anuncie-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
 .anuncie-grid ul{padding:0;margin:20px 0 0;list-style:none;display:grid;gap:12px}
 .anuncie-grid li{display:flex;gap:12px;color:#111;font-weight:500}
-.anuncie-grid li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:var(--azul) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
+.anuncie-grid li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:var(--vivo) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:#fff;box-shadow:0 24px 60px rgba(0,60,90,.22);border:0;border-radius:var(--raio);padding:26px}
 .form .full{grid-column:1/-1}
 .form textarea{min-height:96px;resize:vertical}
@@ -215,7 +234,7 @@ section.bloco{padding-block:96px}
 @media (max-width:860px){.anuncie-grid,.form{grid-template-columns:1fr}}
 
 /* rodapé */
-.rodape{border-top:1px solid var(--linha);padding-block:64px 34px;background:var(--noite)}
+.rodape{border-top:1px solid var(--linha);padding-block:64px 34px;background:var(--vivo);--nevoa:#06364f;--linha:rgba(0,0,0,.16)}
 .rodape .gigante{font:900 clamp(60px,15vw,220px)/.85 var(--display);letter-spacing:-.03em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.75);margin-bottom:48px;white-space:nowrap;overflow:hidden}
 .rodape .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
 .rodape img{height:66px;width:auto}
@@ -271,18 +290,19 @@ section.bloco{padding-block:96px}
       <a href="#anuncie">Anuncie</a>
       <a href="#contato">Contato</a>
     </nav>
+    <a class="zap-topo" id="zap-topo" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>WhatsApp</a>
     <button class="som" id="som" type="button" aria-pressed="false" aria-label="Ligar trilha sonora"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="som-txt">Som</span></button>
   </div>
 </header>
 
 <main id="inicio">
-  <section class="abre">
+  <section class="abre escuro">
     <img class="poster" src="midia/hero-poster.jpg" alt="">
     <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="midia/hero-poster.jpg" aria-label="Voo de drone sobre lavouras, rio e silos no Tocantins"><source src="midia/hero.mp4" type="video/mp4"></video>
     <div class="cortina c1"></div><div class="cortina c2"></div>
     <div class="wrap">
-      <p class="olho slogan">F5 · Atualizando sua vida</p><p class="olho" style="margin-top:10px;color:#0b2f42">F5 Imóveis · Palmas – Tocantins · CRECI J-5434</p>
-      <h1 id="titulo" style="margin-top:18px"><span class="ln"><span>Mais que</span></span><span class="ln"><span>imóveis,</span></span><span class="ln"><span class="azul">realizamos</span></span><span class="ln"><span class="azul">histórias.</span></span></h1>
+      <p class="olho slogan">F5 · Atualizando sua vida</p><p class="olho" style="margin-top:10px;color:#e9f1f5">F5 Imóveis · Palmas – Tocantins · CRECI J-5434</p>
+      <h1 id="titulo" style="margin-top:18px"><span class="ln"><span>Mais que imóveis,</span></span><span class="ln"><span class="azul">realizamos histórias.</span></span></h1>
       <p class="sub">Compra, venda e locação de imóveis urbanos e rurais no Tocantins, com assessoria completa e segurança em cada etapa.</p>
 
       <form class="busca" id="busca" aria-label="Buscar imóveis">
@@ -307,6 +327,13 @@ section.bloco{padding-block:96px}
     <span class="rolar" aria-hidden="true">Role</span>
   </section>
 
+  <div class="confianca"><div class="wrap">
+    <div><b id="conta-imoveis">34</b><span>imóveis disponíveis</span></div>
+    <div><b>Palmas e região</b><span>urbano e rural</span></div>
+    <div><b>CRECI J-5434</b><span>imobiliária registrada</span></div>
+    <div><b>Resposta rápida</b><span>atendimento no WhatsApp</span></div>
+  </div></div>
+
   <div class="faixa" aria-hidden="true"><div class="trilho">
     <span>F5 · Atualizando sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
     <span>F5 · Atualizando sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
@@ -321,6 +348,8 @@ section.bloco{padding-block:96px}
       <div class="grade" id="grade"></div>
     </div>
   </section>
+
+  <div id="categorias"></div>
 
   <section class="historia" id="fazenda" aria-label="Fazenda Lagoa Canaã">
     <div class="palco">
@@ -339,7 +368,7 @@ section.bloco{padding-block:96px}
 
   <section class="bloco casa" id="casa303">
     <div class="wrap topo-casa revela">
-      <div><p class="olho">Locação · Plano Diretor Sul</p><h2 style="font-size:clamp(30px,4.2vw,54px);font-weight:900;text-transform:uppercase;margin-top:12px">Casa na 303 Sul</h2></div>
+      <div><p class="olho">Locação · Plano Diretor Sul</p><h2 style="font-size:clamp(30px,3.8vw,48px);font-weight:800;letter-spacing:-.025em;margin-top:12px">Casa na 303 Sul</h2></div>
       <button class="btn btn-vidro" type="button" id="ver-casa">Ver todas as fotos</button>
     </div>
     <div class="trilha-casa" id="trilha-casa">
@@ -362,7 +391,7 @@ section.bloco{padding-block:96px}
     <div class="wrap"><a id="zap-banner" href="#" target="_blank" rel="noopener"><img src="fotos/banner-chave.jpg" alt="F5 Imóveis: atualizando sua vida. Entre em contato." loading="lazy"></a></div>
   </section>
 
-  <section class="bloco" id="servicos" style="border-block:1px solid var(--linha)">
+  <section class="bloco" id="servicos" style="background:#f2f8fc;border-block:1px solid var(--linha)">
     <div class="wrap">
       <div class="cab revela"><div><p class="olho">Serviços</p><h2>O que a F5 faz por você</h2></div></div>
       <div class="srv">
@@ -387,11 +416,11 @@ section.bloco{padding-block:96px}
     </div>
   </section>
 
-  <section class="bloco" id="anuncie" style="border-top:1px solid var(--linha)">
+  <section class="bloco" id="anuncie" style="background:#f2f8fc;border-top:1px solid var(--linha)">
     <div class="wrap anuncie-grid">
       <div class="revela">
         <p class="olho">Anuncie com a F5</p>
-        <h2 style="font-size:clamp(30px,4.2vw,54px);font-weight:900;text-transform:uppercase;margin-top:12px">Quer vender ou alugar seu imóvel?</h2>
+        <h2 style="font-size:clamp(30px,3.8vw,48px);font-weight:800;letter-spacing:-.025em;margin-top:12px">Quer vender ou alugar seu imóvel?</h2>
         <ul>
           <li>Avaliação com base no mercado de Palmas</li>
           <li>Fotos e vídeos profissionais, inclusive com drone</li>
@@ -2029,7 +2058,7 @@ IMOVEIS.push(...ANTIGOS);
 const nomeFin = { venda: "Venda", locacao: "Locação" };
 
 /* ---------- vitrine ---------- */
-let fin = "todos", limite = 9;
+let fin = "todos", limite = 8;
 function cartao(im) {
   const b = document.createElement("button");
   b.className = "card"; b.type = "button"; b.setAttribute("aria-label", im.titulo + ", ver detalhes");
@@ -2065,23 +2094,40 @@ function mostra() {
     v.innerHTML = 'Nenhum imóvel com esses filtros agora. <a href="' + zap("Olá, F5! Procuro um imóvel e não encontrei no site. Podem me ajudar?") + '" target="_blank" rel="noopener">Fale com a F5</a> que buscamos para você.';
     g.appendChild(v);
   }
-  const a = document.createElement("div"); a.className = "card anuncie";
-  a.innerHTML = '<p class="olho">Proprietário</p><h3>Seu imóvel pode estar aqui</h3><p>Anuncie com a F5 e alcance compradores e inquilinos em Palmas e região.</p><a class="btn btn-azul" href="#anuncie" style="align-self:flex-start">Anunciar imóvel</a>';
-  g.appendChild(a);
   if (lista.length > limite) {
-    const m = document.createElement("button"); m.type = "button"; m.className = "btn btn-azul mais";
-    m.textContent = "Ver mais imóveis (" + (lista.length - limite) + ")";
-    m.onclick = () => { limite += 9; mostra(); };
+    const m = document.createElement("button"); m.type = "button"; m.className = "vertodos mais";
+    m.textContent = "Ver mais imóveis (" + (lista.length - limite) + ") →";
+    m.onclick = () => { limite += 8; mostra(); };
     g.appendChild(m);
   }
   $("#contagem").textContent = lista.length + (lista.length === 1 ? " imóvel encontrado" : " imóveis encontrados");
   if (window.ScrollTrigger) ScrollTrigger.refresh();
 }
-function marcaAba(v) { fin = v; limite = 9; document.querySelectorAll(".aba").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.fin === v))); mostra(); }
+// fileiras por categoria (como nas vitrines de imobiliária): 4 imóveis + "Ver todos"
+const CATEGORIAS = [
+  ["Casas", "Casas à venda em Palmas", im => im.tipo === "Casa" && im.fin === "venda", { fin: "venda", tipo: "Casa" }],
+  ["Apartamentos", "Apartamentos à venda", im => im.tipo === "Apartamento" && im.fin === "venda", { fin: "venda", tipo: "Apartamento" }],
+  ["Aluguel", "Imóveis para alugar", im => im.fin === "locacao", { fin: "locacao" }],
+  ["Lotes", "Lotes e terrenos", im => im.tipo === "Lote", { fin: "todos", tipo: "Lote" }],
+  ["Rural", "Chácaras e fazendas", im => im.tipo === "Chácara" || im.tipo === "Fazenda", { fin: "rural" }]
+];
+function montaCategorias() {
+  const box = $("#categorias");
+  CATEGORIAS.forEach(([olho, tit, teste, filtro]) => {
+    const itens = IMOVEIS.filter(teste); if (!itens.length) return;
+    const sec = document.createElement("section"); sec.className = "categoria";
+    sec.innerHTML = `<div class="wrap"><div class="cab"><div><p class="olho">${olho}</p><h2>${tit}</h2></div></div><div class="grade"></div></div>`;
+    const g = sec.querySelector(".grade"); itens.slice(0, 4).forEach(im => g.appendChild(cartao(im)));
+    const v = document.createElement("button"); v.type = "button"; v.className = "vertodos"; v.textContent = `Ver todos (${itens.length}) →`;
+    v.onclick = () => { $("#f-tipo").value = filtro.tipo || ""; $("#f-regiao").value = ""; $("#f-quartos").value = "0"; $("#f-cod").value = ""; limite = 99; marcaAba(filtro.fin); limite = 99; mostra(); irPara("#imoveis"); };
+    sec.querySelector(".wrap").appendChild(v); box.appendChild(sec);
+  });
+}
+function marcaAba(v) { fin = v; limite = 8; document.querySelectorAll(".aba").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.fin === v))); mostra(); }
 document.querySelectorAll(".aba").forEach(b => b.addEventListener("click", () => marcaAba(b.dataset.fin)));
 document.querySelectorAll("[data-ir]").forEach(a => a.addEventListener("click", () => marcaAba(a.dataset.ir)));
 $("#busca").addEventListener("submit", e => { e.preventDefault(); mostra(); irPara("#imoveis"); });
-["#f-tipo", "#f-regiao", "#f-quartos"].forEach(s => $(s).addEventListener("change", () => { limite = 9; mostra(); }));
+["#f-tipo", "#f-regiao", "#f-quartos"].forEach(s => $(s).addEventListener("change", () => { limite = 8; mostra(); }));
 
 /* ---------- janelas ---------- */
 let lenis = null;
@@ -2148,6 +2194,7 @@ $("#form-anuncie").addEventListener("submit", e => {
 $("#zap").href = zap("Olá, F5! Vim pelo site e quero falar sobre imóveis.");
 $("#link-zap").href = $("#zap").href;
 $("#zap-banner").href = $("#zap").href;
+$("#zap-topo").href = $("#zap").href;
 $("#zap-casa").href = zap("Olá, F5! Quero agendar uma visita na casa da 303 Sul (CÓD. CA0024).");
 
 /* ---------- manifesto: palavras ---------- */
@@ -2155,6 +2202,8 @@ const frase = $("#frase");
 frase.innerHTML = frase.textContent.split(" ").map((p, i) => `<span class="p${i >= 3 ? " az" : ""}">${p}</span>`).join(" ");
 
 mostra();
+montaCategorias();
+$("#conta-imoveis").textContent = IMOVEIS.length;
 
 /* ---------- história da fazenda: quadros guiados pela rolagem ---------- */
 const N = 120, quadros = [], tela = $("#tela"), c2d = tela.getContext("2d");
@@ -2215,8 +2264,9 @@ if (calmo || !temGsap) {
   // topo fica sólido depois da abertura
   ScrollTrigger.create({ start: 40, onUpdate: s => $("#topo").classList.toggle("solido", s.scroll() > 40) });
   // título: linhas sobem por trás de uma máscara, letra a letra
-  document.querySelectorAll("#titulo .ln > span").forEach(sp => { sp.innerHTML = [...sp.textContent].map(ch => `<span style="display:inline-block">${ch === " " ? "&nbsp;" : ch}</span>`).join(""); });
-  gsap.from("#titulo .ln > span > span", { yPercent: 115, rotate: 6, duration: 1.1, ease: "power4.out", stagger: 0.025, delay: 0.9 });
+  // letra por letra, sem quebrar palavras no meio
+  document.querySelectorAll("#titulo .ln > span").forEach(sp => { sp.innerHTML = sp.textContent.split(" ").map(p => `<span style="display:inline-block;white-space:nowrap">${[...p].map(ch => `<i class="l" style="display:inline-block;font-style:normal">${ch}</i>`).join("")}</span>`).join(" "); });
+  gsap.from("#titulo .l", { yPercent: 115, rotate: 6, duration: 1.1, ease: "power4.out", stagger: 0.025, delay: 0.9 });
   gsap.from(".abre .sub, .abre .busca, .abre .olho", { y: 30, duration: 1, ease: "power3.out", stagger: 0.12, delay: 1.4 });
   // vídeo da abertura afasta devagar ao rolar
   gsap.to("#hero-video", { scale: 1.15, yPercent: 8, ease: "none", scrollTrigger: { trigger: ".abre", start: "top top", end: "bottom top", scrub: true } });
