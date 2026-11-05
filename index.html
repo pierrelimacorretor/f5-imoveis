@@ -1,0 +1,675 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="F5 Imóveis — compra, venda, locação e imóveis rurais em Palmas e no Tocantins. CRECI J-5434.">
+<meta property="og:title" content="F5 Imóveis — Mais que imóveis, realizamos histórias">
+<meta property="og:description" content="Compra, venda, locação e imóveis rurais em Palmas e no Tocantins. CRECI J-5434.">
+<meta property="og:image" content="https://f5imoveistocantins.com.br/capa.jpg"><meta property="og:type" content="website">
+<link rel="icon" href="fotos/logo-f5-escuro.png"></head><body>
+<title>F5 Imóveis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: filme de marca — abertura com voo de drone e cortina de cinema, faixa de chamadas, vitrine escura,
+   história da fazenda guiada pela rolagem, galeria horizontal da casa, manifesto que acende palavra por palavra */
+:root{
+  --noite:#121011;       /* fundo, puxado do preto do logo */
+  --carvao:#1d1a1b;      /* preto do logo */
+  --placa:#24201f;       /* superfície dos cartões */
+  --azul:#1babe3;        /* azul do logo */
+  --azul-luz:#6fd0f5;
+  --branco:#f5f8fa;
+  --nevoa:#a9b4bc;       /* texto secundário */
+  --linha:rgba(255,255,255,.10);
+  --display:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --texto:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --raio:16px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--noite);color:var(--branco);font:16px/1.6 var(--texto);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--noite)}
+/* grão de filme */
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+img,video,canvas{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;letter-spacing:-.01em}
+.wrap{max-width:1220px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.olho{font:700 12px/1 var(--display);letter-spacing:.26em;text-transform:uppercase;color:var(--azul)}
+:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 24px;font:700 13px var(--display);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-azul{background:var(--azul);color:var(--carvao);box-shadow:0 10px 30px rgba(27,171,227,.28)}
+.btn-azul:hover{background:var(--azul-luz)}
+.btn-vidro{background:rgba(255,255,255,.08);color:var(--branco);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);backdrop-filter:blur(10px)}
+
+/* topo */
+.topo{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+.topo.solido{background:rgba(18,16,17,.86);backdrop-filter:blur(14px);border-color:var(--linha)}
+.topo .wrap{display:flex;align-items:center;gap:22px;min-height:78px}
+.topo .marca img{height:46px;width:auto}
+.menu{display:flex;gap:24px;margin-left:auto;font:600 13px var(--display);letter-spacing:.08em;text-transform:uppercase}
+.menu a{text-decoration:none;opacity:.82;transition:opacity .2s,color .2s}
+.menu a:hover{opacity:1;color:var(--azul)}
+.som{display:inline-flex;align-items:center;gap:10px;background:none;border:1px solid rgba(255,255,255,.25);color:var(--branco);border-radius:999px;padding:9px 14px;font:700 11px var(--display);letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.som .eq{display:flex;gap:2px;align-items:flex-end;height:14px}
+.som .eq i{width:3px;height:4px;background:var(--azul);border-radius:2px}
+.som[aria-pressed="true"] .eq i{animation:eq .9s ease-in-out infinite}
+.som .eq i:nth-child(2){animation-delay:.15s}.som .eq i:nth-child(3){animation-delay:.3s}.som .eq i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:4px}50%{height:14px}}
+@media (max-width:980px){.menu{display:none}.topo .wrap{justify-content:space-between}}
+
+/* abertura */
+.abre{position:relative;min-height:min(100vh,900px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.abre video,.abre .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.abre::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(18,16,17,.88) 0%,rgba(18,16,17,.55) 45%,rgba(18,16,17,.1) 100%),
+  linear-gradient(0deg,rgba(18,16,17,1) 0%,rgba(18,16,17,.2) 38%,rgba(18,16,17,.35) 100%)}
+.cortina{position:absolute;left:0;right:0;height:50%;background:#000;z-index:5;pointer-events:none;animation:abre-cortina 1.5s cubic-bezier(.7,0,.2,1) .25s forwards}
+.cortina.c1{top:0}.cortina.c2{bottom:0}
+@keyframes abre-cortina{to{height:0}}
+.abre .wrap{width:100%;padding-block:150px 54px}
+.abre h1{font-weight:900;font-size:clamp(42px,7.4vw,104px);text-transform:uppercase;max-width:12.5ch;line-height:.95}
+.abre h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.abre h1 .ln > span{display:inline-block}
+.abre h1 .azul{color:var(--azul);text-shadow:0 0 40px rgba(27,171,227,.45)}
+.abre p.sub{max-width:48ch;margin:22px 0 0;font-size:clamp(16px,1.6vw,19px);color:#d9e2e8}
+.rolar{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:60px;font:700 11px var(--display);letter-spacing:.3em;text-transform:uppercase;color:var(--nevoa);writing-mode:vertical-rl;display:flex;align-items:center;gap:12px}
+.rolar::after{content:"";width:1px;height:60px;background:linear-gradient(var(--azul),transparent);animation:desce 1.8s ease-in-out infinite}
+@keyframes desce{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:700px){.rolar{display:none}}
+
+/* busca */
+.busca{margin-top:34px;background:rgba(18,16,17,.62);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);border-radius:var(--raio);padding:16px;max-width:1000px}
+.abas{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.aba{border:0;background:transparent;color:var(--nevoa);font:700 12px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;cursor:pointer}
+.aba[aria-pressed="true"]{background:var(--azul);color:var(--carvao)}
+.campos{display:grid;grid-template-columns:1.2fr 1.2fr .8fr 1fr auto;gap:10px;align-items:end}
+.campo{display:flex;flex-direction:column;gap:6px;min-width:0}
+.campo label{font:700 10.5px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--nevoa)}
+.campo select,.campo input,.campo textarea{font:500 15px var(--texto);color:var(--branco);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px;width:100%}
+.campo select option{color:#111}
+@media (max-width:860px){.campos{grid-template-columns:1fr 1fr}.campos .btn{grid-column:1/-1}}
+
+/* faixa corrida */
+.faixa{border-block:1px solid var(--linha);overflow:hidden;padding-block:18px;background:var(--carvao)}
+.faixa .trilho{display:flex;width:max-content;animation:corre 38s linear infinite}
+.faixa span{font:900 clamp(20px,3vw,34px) var(--display);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;padding-right:42px;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.55)}
+.faixa span:nth-child(even){color:var(--azul);-webkit-text-stroke:0}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* blocos */
+section.bloco{padding-block:96px}
+.cab{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:34px}
+.cab h2{font-size:clamp(30px,4.2vw,54px);font-weight:900;text-transform:uppercase;margin-top:12px}
+.cab p{margin:10px 0 0;color:var(--nevoa);max-width:58ch}
+.contagem{font:600 13px var(--display);letter-spacing:.08em;color:var(--nevoa)}
+.revela{will-change:transform}
+
+/* cartões */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
+.card{position:relative;background:var(--placa);border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha);display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;transform-style:preserve-3d;transition:box-shadow .3s,border-color .3s}
+.card:hover{border-color:rgba(27,171,227,.5);box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 1px rgba(27,171,227,.25)}
+.card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(27,171,227,.16),transparent 45%);opacity:0;transition:opacity .3s}
+.card:hover::after{opacity:1}
+.card .img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
+.card .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.card:hover .img img{transform:scale(1.07)}
+.etq{position:absolute;top:14px;left:14px;display:flex;gap:6px}
+.etq span{font:800 10.5px var(--display);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:var(--azul);color:var(--carvao)}
+.etq span.esc{background:rgba(18,16,17,.8);color:#fff;backdrop-filter:blur(6px)}
+.fotos-n{position:absolute;right:12px;bottom:12px;font:700 11px var(--display);letter-spacing:.06em;color:#fff;background:rgba(18,16,17,.72);padding:6px 10px;border-radius:999px}
+.card .corpo{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.preco{font:800 22px var(--display)}
+.preco small{font:600 13px var(--texto);color:var(--nevoa)}
+.card h3{font-size:18px;font-weight:800;line-height:1.25}
+.local{color:var(--nevoa);font-size:14px}
+.specs{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:auto;padding-top:14px;border-top:1px solid var(--linha);font-size:14px;color:var(--nevoa)}
+.specs b{color:var(--branco);font-family:var(--display)}
+.cod{font:700 10.5px var(--display);letter-spacing:.18em;color:var(--nevoa)}
+.card.anuncie{background:linear-gradient(160deg,#1b3a4a,var(--placa) 60%);justify-content:center;padding:30px;gap:14px;cursor:default}
+.card.anuncie h3{font-size:26px;font-weight:900;text-transform:uppercase}
+.card.anuncie p{margin:0;color:#cfd8de}
+.vazio{grid-column:1/-1;padding:28px;border:1px dashed var(--linha);border-radius:var(--raio);color:var(--nevoa);text-align:center}
+
+/* história da fazenda (rolagem) */
+.historia{position:relative;height:420vh;background:#000}
+.historia .palco{position:sticky;top:0;height:100vh;overflow:hidden}
+.historia canvas{position:absolute;inset:0;width:100%;height:100%}
+.historia .palco::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.75),rgba(0,0,0,.05) 45%,rgba(0,0,0,.45));pointer-events:none}
+.historia .cap{position:absolute;left:0;right:0;top:110px;z-index:2}
+.historia .barra{height:3px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:16px;max-width:260px;overflow:hidden}
+.historia .barra i{display:block;height:100%;width:0;background:var(--azul)}
+.passos{position:absolute;left:0;right:0;bottom:12vh;z-index:2}
+.passo{position:absolute;left:0;right:0;bottom:0;opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+.passo.on{opacity:1;transform:none}
+.passo .num{font:900 clamp(64px,13vw,190px)/.9 var(--display);letter-spacing:-.02em;background:linear-gradient(180deg,#fff 40%,#9fdcf6);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 30px rgba(27,171,227,.35))}
+.passo .tit{font:900 clamp(34px,6vw,84px)/.98 var(--display);text-transform:uppercase}
+.passo .rot{display:inline-block;margin-top:14px;font:800 clamp(13px,1.4vw,16px) var(--display);letter-spacing:.16em;text-transform:uppercase;background:var(--azul);color:var(--carvao);padding:9px 16px;border-radius:999px}
+.passo .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.historia.estatica{height:auto}
+.historia.estatica .palco{position:relative;height:auto;min-height:80vh}
+.historia.estatica .passos{position:relative;bottom:auto;padding-block:60vh 60px;display:grid;gap:40px}
+.historia.estatica .passo{position:relative;opacity:1;transform:none}
+
+/* galeria horizontal da casa */
+.casa{overflow:hidden}
+.casa .topo-casa{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.trilha-casa{display:flex;gap:22px;padding-left:max(16px,env(safe-area-inset-left,0px));width:max-content}
+.foto-casa{position:relative;flex:none;width:min(70vw,620px);aspect-ratio:4/5;border-radius:var(--raio);overflow:hidden;background:#000;margin:0}
+.foto-casa img{width:100%;height:100%;object-fit:cover}
+.foto-casa figcaption{position:absolute;left:16px;bottom:16px;font:800 13px var(--display);letter-spacing:.12em;text-transform:uppercase;background:rgba(18,16,17,.72);backdrop-filter:blur(6px);padding:9px 14px;border-radius:999px}
+.foto-casa.capa{width:min(86vw,820px);aspect-ratio:auto;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;background:linear-gradient(150deg,#1b3a4a,var(--placa));border:1px solid var(--linha)}
+.foto-casa.capa h3{font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase}
+.foto-casa.capa ul{margin:16px 0 22px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;color:#d6dee3;font-size:15px}
+.foto-casa.capa li::before{content:"— ";color:var(--azul)}
+.casa.estatica .trilha-casa{width:auto;overflow-x:auto;padding-bottom:12px}
+@media (max-width:600px){.foto-casa.capa ul{grid-template-columns:1fr}}
+
+/* serviços */
+.srv{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.srv div{display:flex;flex-direction:column;gap:12px;min-width:0;padding:26px;border:1px solid var(--linha);border-radius:var(--raio);background:var(--carvao)}
+.srv svg{width:44px;height:44px;stroke:var(--azul);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.srv h3{font-size:18px;font-weight:800}
+.srv p{margin:0;color:var(--nevoa);font-size:15px}
+@media (max-width:980px){.srv{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.srv{grid-template-columns:1fr}}
+
+/* manifesto */
+.manifesto .frase{font:900 clamp(34px,6.4vw,92px)/1.02 var(--display);text-transform:uppercase;max-width:16ch}
+.manifesto .frase .p{opacity:.18;transition:opacity .2s}
+.manifesto .frase .p.acesa{opacity:1}
+.manifesto .frase .p.az{color:var(--azul)}
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.numeros div{border-top:2px solid var(--azul);padding-top:16px}
+.numeros b{display:block;font:900 clamp(26px,3vw,38px) var(--display)}
+.numeros span{font-size:14px;color:var(--nevoa)}
+@media (max-width:760px){.numeros{grid-template-columns:1fr 1fr}}
+
+/* anuncie */
+.anuncie-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:start}
+.anuncie-grid ul{padding:0;margin:20px 0 0;list-style:none;display:grid;gap:12px}
+.anuncie-grid li{display:flex;gap:12px;color:#d6dee3}
+.anuncie-grid li::before{content:"";flex:none;width:20px;height:20px;margin-top:3px;border-radius:50%;background:var(--azul) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231d1a1b' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--carvao);border:1px solid var(--linha);border-radius:var(--raio);padding:26px}
+.form .full{grid-column:1/-1}
+.form textarea{min-height:96px;resize:vertical}
+.aviso{font-size:13px;color:var(--nevoa);margin:0}
+@media (max-width:860px){.anuncie-grid,.form{grid-template-columns:1fr}}
+
+/* rodapé */
+.rodape{border-top:1px solid var(--linha);padding-block:64px 34px;background:var(--carvao)}
+.rodape .gigante{font:900 clamp(60px,15vw,220px)/.85 var(--display);letter-spacing:-.03em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.18);margin-bottom:48px;white-space:nowrap;overflow:hidden}
+.rodape .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px}
+.rodape img{height:66px;width:auto}
+.rodape h4{font:800 11px var(--display);letter-spacing:.2em;text-transform:uppercase;color:#fff;margin:0 0 12px}
+.rodape p{margin:6px 0;color:var(--nevoa)}
+.rodape .fone{font:900 22px var(--display);color:#fff;user-select:all}
+.rodape .base{margin-top:40px;padding-top:20px;border-top:1px solid var(--linha);font-size:13px;color:var(--nevoa);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+@media (max-width:760px){.rodape .cols{grid-template-columns:1fr}}
+
+/* whatsapp */
+.zap{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;align-items:center;gap:10px;background:#25d366;color:#05301a;font:800 13px var(--display);letter-spacing:.06em;text-decoration:none;padding:14px 18px;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,.45)}
+.zap svg{width:24px;height:24px}
+.zap::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pulsa 2.4s infinite}
+@keyframes pulsa{70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@media (max-width:520px){.zap span{display:none}.zap{padding:15px}}
+
+/* janelas */
+.janela{position:fixed;inset:0;z-index:95;background:rgba(5,6,7,.86);backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:calc(24px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.janela .caixa{background:var(--carvao);border:1px solid var(--linha);border-radius:18px;max-width:1080px;width:100%;overflow:hidden;position:relative}
+.fechar{position:absolute;top:12px;right:12px;z-index:3;width:44px;height:44px;border-radius:50%;border:0;background:rgba(0,0,0,.65);color:#fff;font:700 22px var(--display);cursor:pointer}
+.galeria{position:relative;background:#000;aspect-ratio:16/9;max-height:64vh;width:100%}
+.galeria img{width:100%;height:100%;object-fit:contain}
+.seta{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--carvao);font:800 20px var(--display);cursor:pointer}
+.seta.esq{left:12px}.seta.dir{right:12px}
+.miniaturas{display:flex;gap:6px;padding:8px;overflow-x:auto;background:#000}
+.miniaturas button{flex:none;width:84px;height:60px;padding:0;border:2px solid transparent;border-radius:6px;overflow:hidden;cursor:pointer;background:none}
+.miniaturas button[aria-current="true"]{border-color:var(--azul)}
+.miniaturas img{width:100%;height:100%;object-fit:cover}
+.info{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;padding:26px}
+.info h2{font-size:clamp(24px,3vw,34px);font-weight:900;margin:8px 0 6px}
+.info ul{margin:16px 0 0;padding-left:20px;color:#d6dee3}
+.info li{margin:4px 0}
+.lado{background:rgba(255,255,255,.04);border:1px solid var(--linha);border-radius:var(--raio);padding:20px;display:flex;flex-direction:column;gap:12px;align-self:start}
+.lado .specs{border-top:0;padding-top:0}
+.filme video{width:100%;background:#000;aspect-ratio:16/9}
+@media (max-width:760px){.info{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .cortina{display:none}
+  .faixa .trilho{transform:none}
+}
+</style>
+
+<header class="topo" id="topo">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="F5 Imóveis, início"><img src="fotos/logo-f5-escuro.png" alt="F5 Imóveis"></a>
+    <nav class="menu" aria-label="Menu principal">
+      <a href="#imoveis" data-ir="venda">Comprar</a>
+      <a href="#imoveis" data-ir="locacao">Alugar</a>
+      <a href="#fazenda">Rural</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#anuncie">Anuncie</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <button class="som" id="som" type="button" aria-pressed="false" aria-label="Ligar trilha sonora"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span id="som-txt">Som</span></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="abre">
+    <img class="poster" src="midia/hero-poster.jpg" alt="">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="midia/hero-poster.jpg" aria-label="Voo de drone sobre lavouras, rio e silos no Tocantins"><source src="midia/hero.mp4" type="video/mp4"></video>
+    <div class="cortina c1"></div><div class="cortina c2"></div>
+    <div class="wrap">
+      <p class="olho">F5 Imóveis · Palmas – Tocantins · CRECI J-5434</p>
+      <h1 id="titulo" style="margin-top:18px"><span class="ln"><span>Mais que</span></span><span class="ln"><span>imóveis,</span></span><span class="ln"><span class="azul">realizamos</span></span><span class="ln"><span class="azul">histórias.</span></span></h1>
+      <p class="sub">Compra, venda e locação de imóveis urbanos e rurais no Tocantins, com assessoria completa e segurança em cada etapa.</p>
+
+      <form class="busca" id="busca" aria-label="Buscar imóveis">
+        <div class="abas" role="group" aria-label="Finalidade">
+          <button type="button" class="aba" data-fin="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="aba" data-fin="venda" aria-pressed="false">Comprar</button>
+          <button type="button" class="aba" data-fin="locacao" aria-pressed="false">Alugar</button>
+          <button type="button" class="aba" data-fin="rural" aria-pressed="false">Rural</button>
+        </div>
+        <div class="campos">
+          <div class="campo"><label for="f-tipo">Tipo de imóvel</label>
+            <select id="f-tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Apartamento</option><option>Lote</option><option>Chácara</option><option>Fazenda</option><option>Sala comercial</option></select></div>
+          <div class="campo"><label for="f-regiao">Região</label>
+            <select id="f-regiao"><option value="">Todas as regiões</option><option>Plano Diretor Sul</option><option>Plano Diretor Norte</option><option>Graciosa / Orla</option><option>Taquaralto e Aurenys</option><option>Área rural</option></select></div>
+          <div class="campo"><label for="f-quartos">Quartos</label>
+            <select id="f-quartos"><option value="0">Indiferente</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></div>
+          <div class="campo"><label for="f-cod">Código</label><input id="f-cod" placeholder="Ex.: F5-002" autocomplete="off"></div>
+          <button class="btn btn-azul" type="submit">Buscar imóveis</button>
+        </div>
+      </form>
+    </div>
+    <span class="rolar" aria-hidden="true">Role</span>
+  </section>
+
+  <div class="faixa" aria-hidden="true"><div class="trilho">
+    <span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
+    <span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
+  </div></div>
+
+  <section class="bloco" id="imoveis">
+    <div class="wrap">
+      <div class="cab revela">
+        <div><p class="olho">Destaques</p><h2>Imóveis em destaque</h2><p>Selecionados pela equipe F5. Toque em um cartão para ver todas as fotos e detalhes.</p></div>
+        <span class="contagem" id="contagem" aria-live="polite"></span>
+      </div>
+      <div class="grade" id="grade"></div>
+    </div>
+  </section>
+
+  <section class="historia" id="fazenda" aria-label="Fazenda Lagoa Canaã">
+    <div class="palco">
+      <canvas id="tela" aria-hidden="true"></canvas>
+      <div class="cap"><div class="wrap"><p class="olho">Exclusivo F5 · Venda</p><h2 style="font-size:clamp(26px,3.4vw,44px);font-weight:900;text-transform:uppercase;margin-top:10px">Fazenda Lagoa Canaã</h2><div class="barra"><i id="barra"></i></div></div></div>
+      <div class="passos"><div class="wrap" style="position:relative">
+        <div class="passo on" data-de="0" data-ate=".22"><div class="num" data-conta="2384">2.384</div><div class="tit">hectares</div><span class="rot">493 alqueires</span></div>
+        <div class="passo" data-de=".22" data-ate=".45"><div class="num" data-conta="1500">1.500</div><div class="tit">hectares</div><span class="rot">de área de projeto</span></div>
+        <div class="passo" data-de=".45" data-ate=".68"><div class="tit">Lavouras<br>formadas</div><span class="rot">Terra pronta para produzir</span></div>
+        <div class="passo" data-de=".68" data-ate=".86"><div class="tit">Secadores,<br>silos e galpões</div><span class="rot">Estrutura negociada à parte</span></div>
+        <div class="passo" data-de=".86" data-ate="1.01"><div class="tit">Uma oportunidade<br>rara</div>
+          <div class="acoes"><button class="btn btn-azul" type="button" id="ver-filme">▶ Assistir ao filme</button><button class="btn btn-vidro" type="button" id="ver-fazenda">Ver fotos e detalhes</button></div></div>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="bloco casa" id="casa303">
+    <div class="wrap topo-casa revela">
+      <div><p class="olho">Locação · Plano Diretor Sul</p><h2 style="font-size:clamp(30px,4.2vw,54px);font-weight:900;text-transform:uppercase;margin-top:12px">Casa na 303 Sul</h2></div>
+      <button class="btn btn-vidro" type="button" id="ver-casa">Ver todas as fotos</button>
+    </div>
+    <div class="trilha-casa" id="trilha-casa">
+      <div class="foto-casa capa">
+        <p class="olho">CÓD. F5-002</p>
+        <h3 style="margin-top:12px">3 suítes · 300 m² construídos · lote de 490 m²</h3>
+        <ul><li>Sala com pé-direito duplo</li><li>Suíte com closet</li><li>Mobília planejada</li><li>Piscina e jardim</li><li>Ambiente superior duplo</li><li>Calçada em pedra portuguesa</li></ul>
+        <a class="btn btn-azul" id="zap-casa" href="#" target="_blank" rel="noopener" style="align-self:flex-start">Agendar visita</a>
+      </div>
+      <figure class="foto-casa"><img src="fotos/casa303-1.jpg" alt="Piscina e fachada dos fundos da casa" loading="lazy"><figcaption>Piscina</figcaption></figure>
+      <figure class="foto-casa"><img src="fotos/casa303-2.jpg" alt="Sala com pé-direito duplo" loading="lazy"><figcaption>Pé-direito duplo</figcaption></figure>
+      <figure class="foto-casa"><img src="fotos/casa303-4.jpg" alt="Cozinha com armários planejados" loading="lazy"><figcaption>Cozinha planejada</figcaption></figure>
+      <figure class="foto-casa"><img src="fotos/casa303-5.jpg" alt="Suíte com cabeceira estofada" loading="lazy"><figcaption>Suíte</figcaption></figure>
+      <figure class="foto-casa"><img src="fotos/casa303-6.jpg" alt="Banheiro de suíte com bancada dupla" loading="lazy"><figcaption>Banheiro da suíte</figcaption></figure>
+      <figure class="foto-casa"><img src="fotos/casa303-8.jpg" alt="Entrada da casa com jardim" loading="lazy"><figcaption>Entrada</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="bloco" id="servicos" style="background:var(--carvao);border-block:1px solid var(--linha)">
+    <div class="wrap">
+      <div class="cab revela"><div><p class="olho">Serviços</p><h2>O que a F5 faz por você</h2></div></div>
+      <div class="srv">
+        <div class="revela"><svg viewBox="0 0 48 48"><path d="M7 22 24 8l17 14"/><path d="M11 19v21h26V19"/><path d="M20 40V28h8v12"/></svg><h3>Compra e venda</h3><p>Do anúncio à escritura: avaliação, divulgação, visitas e negociação acompanhadas de perto.</p></div>
+        <div class="revela"><svg viewBox="0 0 48 48"><rect x="9" y="6" width="30" height="36" rx="3"/><path d="M16 16h16M16 23h16M16 30h9"/></svg><h3>Locação e administração</h3><p>Contrato, vistoria, cobrança e repasse do aluguel, com o proprietário sempre informado.</p></div>
+        <div class="revela"><svg viewBox="0 0 48 48"><path d="M4 38c8-6 14-6 20 0s12 6 20 0"/><path d="M8 30V18l8-6 8 6v12"/><path d="M30 30V14h10v16"/></svg><h3>Imóveis rurais</h3><p>Fazendas, chácaras e áreas produtivas no Tocantins, com documentação e visita técnica.</p></div>
+        <div class="revela"><svg viewBox="0 0 48 48"><path d="M24 5 9 11v11c0 10 7 18 15 21 8-3 15-11 15-21V11z"/><path d="m17 24 5 5 9-10"/></svg><h3>Assessoria completa</h3><p>Análise de documentos, financiamento e orientação até a entrega das chaves.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco manifesto">
+    <div class="wrap">
+      <p class="olho">Nosso jeito</p>
+      <p class="frase" id="frase" style="margin:18px 0 0">O lugar certo para o seu amanhã.</p>
+      <div class="numeros">
+        <div><b>J-5434</b><span>CRECI da imobiliária</span></div>
+        <div><b>Palmas</b><span>Atendimento em todo o Tocantins</span></div>
+        <div><b>Urbano</b><span>Casas, apartamentos e lotes</span></div>
+        <div><b>Rural</b><span>Fazendas e chácaras</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" id="anuncie" style="background:var(--carvao);border-top:1px solid var(--linha)">
+    <div class="wrap anuncie-grid">
+      <div class="revela">
+        <p class="olho">Anuncie com a F5</p>
+        <h2 style="font-size:clamp(30px,4.2vw,54px);font-weight:900;text-transform:uppercase;margin-top:12px">Quer vender ou alugar seu imóvel?</h2>
+        <ul>
+          <li>Avaliação com base no mercado de Palmas</li>
+          <li>Fotos e vídeos profissionais, inclusive com drone</li>
+          <li>Divulgação no site, no Instagram e em anúncios</li>
+          <li>Acompanhamento das visitas até o contrato</li>
+        </ul>
+      </div>
+      <form class="form revela" id="form-anuncie">
+        <div class="campo"><label for="a-nome">Seu nome</label><input id="a-nome" required autocomplete="name"></div>
+        <div class="campo"><label for="a-fone">Telefone</label><input id="a-fone" required inputmode="tel" autocomplete="tel" placeholder="(63) 9 0000-0000"></div>
+        <div class="campo"><label for="a-fin">Quero</label><select id="a-fin"><option>Vender</option><option>Alugar</option><option>Vender ou alugar</option></select></div>
+        <div class="campo"><label for="a-tipo">Tipo</label><select id="a-tipo"><option>Casa</option><option>Apartamento</option><option>Lote</option><option>Chácara</option><option>Fazenda</option><option>Sala comercial</option></select></div>
+        <div class="campo full"><label for="a-local">Bairro ou cidade</label><input id="a-local" placeholder="Ex.: 303 Sul, Palmas"></div>
+        <div class="campo full"><label for="a-obs">Conte um pouco do imóvel</label><textarea id="a-obs" placeholder="Quartos, área, valor esperado..."></textarea></div>
+        <div class="full" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+          <button class="btn btn-azul" type="submit">Enviar pelo WhatsApp</button>
+          <p class="aviso" id="a-aviso">Abrimos o WhatsApp da F5 com a mensagem pronta. É só tocar em enviar.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape" id="contato">
+  <div class="wrap">
+    <div class="gigante" aria-hidden="true">F5 Imóveis</div>
+    <div class="cols">
+      <div><img src="fotos/logo-f5-escuro.png" alt="F5 Imóveis"><p style="margin-top:16px;max-width:36ch">Ideal para você. Real para a vida. Imóveis urbanos e rurais em Palmas e região.</p></div>
+      <div>
+        <h4>Fale com a F5</h4>
+        <p class="fone">(63) 98402-1137</p>
+        <p><a href="#" id="link-zap" target="_blank" rel="noopener">Abrir conversa no WhatsApp</a></p>
+        <p><a href="https://www.instagram.com/f5_imoveis/" target="_blank" rel="noopener">Instagram @f5_imoveis</a></p>
+      </div>
+      <div><h4>Onde estamos</h4><p>Palmas – Tocantins</p><p>Segunda a sexta, 8h às 18h<br>Sábado, 8h às 12h</p></div>
+    </div>
+    <div class="base"><span>© 2026 F5 Imóveis · CRECI J-5434 · Palmas – TO</span><span>Pessoas, lares e grandes conquistas.</span></div>
+  </div>
+</footer>
+
+<a class="zap" id="zap" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
+  <span>Fale com a F5</span>
+</a>
+
+<div class="janela" id="ficha" hidden role="dialog" aria-modal="true" aria-labelledby="ficha-titulo">
+  <div class="caixa">
+    <button class="fechar" data-fecha aria-label="Fechar">×</button>
+    <div class="galeria"><img id="g-img" alt=""><button class="seta esq" id="g-ant" aria-label="Foto anterior">‹</button><button class="seta dir" id="g-prox" aria-label="Próxima foto">›</button></div>
+    <div class="miniaturas" id="g-mini"></div>
+    <div class="info">
+      <div><span class="cod" id="ficha-cod"></span><h2 id="ficha-titulo"></h2><p class="local" id="ficha-local"></p><ul id="ficha-lista"></ul></div>
+      <aside class="lado">
+        <div class="preco" id="ficha-preco"></div>
+        <div class="specs" id="ficha-specs"></div>
+        <a class="btn btn-azul" id="ficha-zap" href="#" target="_blank" rel="noopener">Quero saber mais</a>
+        <p class="aviso">Visitas somente com agendamento.</p>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="janela" id="filme" hidden role="dialog" aria-modal="true" aria-label="Filme da Fazenda Lagoa Canaã">
+  <div class="caixa filme">
+    <button class="fechar" data-fecha aria-label="Fechar">×</button>
+    <video id="filme-video" controls playsinline preload="none" poster="fotos/fazenda-1.jpg"><source src="midia/fazenda-filme.mp4" type="video/mp4"></video>
+  </div>
+</div>
+
+<audio id="trilha" src="midia/trilha.mp4" loop preload="none"></audio>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+// WhatsApp da F5 (troque aqui se mudar o número)
+const ZAP = "5563984021137";
+const zap = (msg) => "https://wa.me/" + ZAP + "?text=" + encodeURIComponent(msg);
+const $ = (s) => document.querySelector(s);
+const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Imóveis do site. Para adicionar um novo, copie um bloco e ajuste os dados e as fotos.
+const IMOVEIS = [
+  { cod: "F5-001", fin: "venda", rural: true, tipo: "Fazenda", regiao: "Área rural", destaque: "Exclusivo",
+    titulo: "Fazenda Lagoa Canaã", local: "Tocantins", preco: "Sob consulta",
+    specs: [["2.384", "hectares"], ["493", "alqueires"], ["1.500 ha", "de projeto"]],
+    lista: ["2.384 hectares (493 alqueires)", "1.500 hectares de área de projeto", "Às margens do rio", "Lavouras formadas", "Estrutura de secadores, silos e galpões (negociada à parte)"],
+    fotos: [1, 2, 3, 4, 5, 6, 7, 8].map(n => "fotos/fazenda-" + n + ".jpg") },
+  { cod: "F5-002", fin: "locacao", rural: false, tipo: "Casa", regiao: "Plano Diretor Sul", quartos: 3,
+    titulo: "Casa com piscina na 303 Sul", local: "303 Sul · Palmas", preco: "Sob consulta",
+    specs: [["3", "suítes"], ["300 m²", "construídos"], ["490 m²", "de lote"]],
+    lista: ["3 quartos, todos suítes (1 com closet)", "Sala com pé-direito duplo", "Sala de jantar", "Ambiente superior duplo", "Cozinha", "Área de serviço e dependências domésticas", "Rica em mobília planejada (sala, quartos, cozinha e banheiros)", "Piscina e jardinagem", "Calçada em pedra portuguesa"],
+    fotos: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => "fotos/casa303-" + n + ".jpg") }
+];
+const nomeFin = { venda: "Venda", locacao: "Locação" };
+
+/* ---------- vitrine ---------- */
+let fin = "todos";
+function cartao(im) {
+  const b = document.createElement("button");
+  b.className = "card"; b.type = "button"; b.setAttribute("aria-label", im.titulo + ", ver detalhes");
+  b.innerHTML = `<div class="img"><img src="${im.fotos[0]}" alt="" loading="lazy"><div class="etq"><span>${nomeFin[im.fin]}</span>${im.destaque ? `<span class="esc">${im.destaque}</span>` : ""}</div><span class="fotos-n">${im.fotos.length} fotos</span></div>
+    <div class="corpo"><div class="preco">${im.preco}${im.fin === "locacao" ? " <small>/ mês</small>" : ""}</div><h3>${im.titulo}</h3><div class="local">${im.local}</div>
+    <div class="specs">${im.specs.map(([n, t]) => `<span><b>${n}</b> ${t}</span>`).join("")}</div><span class="cod">CÓD. ${im.cod}</span></div>`;
+  b.addEventListener("click", () => abrirFicha(im));
+  inclina(b);
+  return b;
+}
+// inclinação 3D e luz que segue o mouse (só em mouse)
+function inclina(el) {
+  if (calmo || !matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  el.addEventListener("pointermove", e => {
+    const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    el.style.setProperty("--mx", x * 100 + "%"); el.style.setProperty("--my", y * 100 + "%");
+    el.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 6}deg) rotateY(${(x - 0.5) * 8}deg) translateY(-4px)`;
+  });
+  el.addEventListener("pointerleave", () => { el.style.transform = ""; });
+}
+function filtra() {
+  const tipo = $("#f-tipo").value, reg = $("#f-regiao").value, q = +$("#f-quartos").value;
+  const cod = $("#f-cod").value.trim().toUpperCase().replace(/[\s-]/g, "");
+  return IMOVEIS.filter(im => (fin === "todos" || (fin === "rural" ? im.rural : im.fin === fin)) && (!tipo || im.tipo === tipo) &&
+    (!reg || im.regiao === reg) && (!q || (im.quartos || 0) >= q) && (!cod || im.cod.replace("-", "").includes(cod)));
+}
+function mostra() {
+  const g = $("#grade"); g.textContent = "";
+  const lista = filtra();
+  lista.forEach(im => g.appendChild(cartao(im)));
+  if (!lista.length) {
+    const v = document.createElement("div"); v.className = "vazio";
+    v.innerHTML = 'Nenhum imóvel com esses filtros agora. <a href="' + zap("Olá, F5! Procuro um imóvel e não encontrei no site. Podem me ajudar?") + '" target="_blank" rel="noopener">Fale com a F5</a> que buscamos para você.';
+    g.appendChild(v);
+  }
+  const a = document.createElement("div"); a.className = "card anuncie";
+  a.innerHTML = '<p class="olho">Proprietário</p><h3>Seu imóvel pode estar aqui</h3><p>Anuncie com a F5 e alcance compradores e inquilinos em Palmas e região.</p><a class="btn btn-azul" href="#anuncie" style="align-self:flex-start">Anunciar imóvel</a>';
+  g.appendChild(a);
+  $("#contagem").textContent = lista.length + (lista.length === 1 ? " imóvel encontrado" : " imóveis encontrados");
+  if (window.ScrollTrigger) ScrollTrigger.refresh();
+}
+function marcaAba(v) { fin = v; document.querySelectorAll(".aba").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.fin === v))); mostra(); }
+document.querySelectorAll(".aba").forEach(b => b.addEventListener("click", () => marcaAba(b.dataset.fin)));
+document.querySelectorAll("[data-ir]").forEach(a => a.addEventListener("click", () => marcaAba(a.dataset.ir)));
+$("#busca").addEventListener("submit", e => { e.preventDefault(); mostra(); irPara("#imoveis"); });
+["#f-tipo", "#f-regiao", "#f-quartos"].forEach(s => $(s).addEventListener("change", mostra));
+
+/* ---------- janelas ---------- */
+let lenis = null;
+function abreJanela(id) { $(id).hidden = false; document.body.style.overflow = "hidden"; lenis && lenis.stop(); $(id).querySelector("[data-fecha]").focus(); }
+function fechaJanelas() {
+  document.querySelectorAll(".janela").forEach(j => j.hidden = true);
+  document.body.style.overflow = ""; lenis && lenis.start();
+  const v = $("#filme-video"); if (!v.paused) v.pause();
+}
+document.querySelectorAll("[data-fecha]").forEach(b => b.addEventListener("click", fechaJanelas));
+document.querySelectorAll(".janela").forEach(j => j.addEventListener("click", e => { if (e.target === j) fechaJanelas(); }));
+let atual = null, idx = 0;
+function foto(i) {
+  idx = (i + atual.fotos.length) % atual.fotos.length;
+  $("#g-img").src = atual.fotos[idx]; $("#g-img").alt = atual.titulo + ", foto " + (idx + 1) + " de " + atual.fotos.length;
+  document.querySelectorAll("#g-mini button").forEach((b, k) => b.setAttribute("aria-current", String(k === idx)));
+}
+function abrirFicha(im) {
+  atual = im;
+  $("#ficha-cod").textContent = "CÓD. " + im.cod + " · " + nomeFin[im.fin];
+  $("#ficha-titulo").textContent = im.titulo; $("#ficha-local").textContent = im.local;
+  $("#ficha-preco").innerHTML = im.preco + (im.fin === "locacao" ? " <small>/ mês</small>" : "");
+  $("#ficha-specs").innerHTML = im.specs.map(([n, t]) => `<span><b>${n}</b> ${t}</span>`).join("");
+  $("#ficha-lista").innerHTML = im.lista.map(l => `<li>${l}</li>`).join("");
+  $("#ficha-zap").href = zap(`Olá, F5! Tenho interesse no imóvel ${im.cod} – ${im.titulo}. Pode me passar mais informações?`);
+  const m = $("#g-mini"); m.textContent = "";
+  im.fotos.forEach((f, k) => { const b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-label", "Ver foto " + (k + 1)); b.innerHTML = `<img src="${f}" alt="" loading="lazy">`; b.onclick = () => foto(k); m.appendChild(b); });
+  foto(0); abreJanela("#ficha");
+}
+$("#g-ant").onclick = () => foto(idx - 1);
+$("#g-prox").onclick = () => foto(idx + 1);
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") fechaJanelas();
+  if (!$("#ficha").hidden) { if (e.key === "ArrowLeft") foto(idx - 1); if (e.key === "ArrowRight") foto(idx + 1); }
+});
+$("#ver-fazenda").onclick = () => abrirFicha(IMOVEIS[0]);
+$("#ver-casa").onclick = () => abrirFicha(IMOVEIS[1]);
+$("#ver-filme").onclick = () => {
+  abreJanela("#filme"); pausaTrilha();
+  const v = $("#filme-video"); v.play().catch(() => {});
+};
+
+/* ---------- som ---------- */
+const trilha = $("#trilha"); let somOn = false, rampa = null;
+function volume(alvo, ms, fim) {
+  clearInterval(rampa); const ini = trilha.volume, t0 = performance.now();
+  rampa = setInterval(() => { const k = Math.min(1, (performance.now() - t0) / ms); trilha.volume = ini + (alvo - ini) * k; if (k >= 1) { clearInterval(rampa); fim && fim(); } }, 30);
+}
+function pausaTrilha() { if (!somOn) return; somOn = false; volume(0, 400, () => trilha.pause()); marcaSom(); }
+function marcaSom() { $("#som").setAttribute("aria-pressed", String(somOn)); $("#som-txt").textContent = somOn ? "Som ligado" : "Som"; $("#som").setAttribute("aria-label", somOn ? "Desligar trilha sonora" : "Ligar trilha sonora"); }
+$("#som").addEventListener("click", () => {
+  if (somOn) { pausaTrilha(); return; }
+  somOn = true; trilha.volume = 0; trilha.play().then(() => volume(0.55, 1500)).catch(() => { somOn = false; marcaSom(); }); marcaSom();
+});
+
+/* ---------- anuncie ---------- */
+$("#form-anuncie").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim();
+  const msg = `Olá, F5! Quero ${v("#a-fin").toLowerCase()} meu imóvel.\nNome: ${v("#a-nome")}\nTelefone: ${v("#a-fone")}\nTipo: ${v("#a-tipo")}\nLocal: ${v("#a-local") || "-"}\nSobre o imóvel: ${v("#a-obs") || "-"}`;
+  const a = document.createElement("a"); a.href = zap(msg); a.target = "_blank"; a.rel = "noopener"; a.click();
+  $("#a-aviso").textContent = "Abrimos o WhatsApp com sua mensagem. Se não abriu, chame no (63) 98402-1137.";
+});
+$("#zap").href = zap("Olá, F5! Vim pelo site e quero falar sobre imóveis.");
+$("#link-zap").href = $("#zap").href;
+$("#zap-casa").href = zap("Olá, F5! Quero agendar uma visita na casa da 303 Sul (CÓD. F5-002).");
+
+/* ---------- manifesto: palavras ---------- */
+const frase = $("#frase");
+frase.innerHTML = frase.textContent.split(" ").map((p, i) => `<span class="p${i >= 3 ? " az" : ""}">${p}</span>`).join(" ");
+
+mostra();
+
+/* ---------- história da fazenda: quadros guiados pela rolagem ---------- */
+const N = 120, quadros = [], tela = $("#tela"), c2d = tela.getContext("2d");
+let ultimo = -1;
+function caminho(i) { return "midia/seq/q" + String(i).padStart(3, "0") + ".jpg"; }
+function ajusta() {
+  const r = window.devicePixelRatio || 1;
+  tela.width = Math.round(tela.clientWidth * Math.min(r, 2)); tela.height = Math.round(tela.clientHeight * Math.min(r, 2));
+  desenha(Math.max(ultimo, 0), true);
+}
+function desenha(i, forca) {
+  let im = quadros[i];
+  if (!im || !im.complete || !im.naturalWidth) { for (let k = i; k >= 0; k--) if (quadros[k] && quadros[k].complete && quadros[k].naturalWidth) { im = quadros[k]; break; } }
+  if (!im || (!forca && i === ultimo)) return;
+  ultimo = i;
+  const s = Math.max(tela.width / im.naturalWidth, tela.height / im.naturalHeight);
+  const w = im.naturalWidth * s, h = im.naturalHeight * s;
+  c2d.drawImage(im, (tela.width - w) / 2, (tela.height - h) / 2, w, h);
+}
+for (let i = 0; i < N; i++) { const im = new Image(); im.decoding = "async"; if (i === 0) im.onload = () => desenha(0, true); quadros.push(im); }
+// carrega primeiro o quadro 0, depois os demais em ondas (de 8 em 8, depois preenchendo)
+quadros[0].src = caminho(0);
+const ordem = []; for (let p = 8; p >= 1; p = p / 2 | 0) { for (let i = 0; i < N; i += p) if (!ordem.includes(i)) ordem.push(i); if (p === 1) break; }
+let fila = 0; function carrega() { for (let k = 0; k < 6 && fila < ordem.length; k++, fila++) { const i = ordem[fila]; if (!quadros[i].src) { quadros[i].src = caminho(i); quadros[i].onload = () => { if (i <= ultimo + 4) desenha(ultimo, true); }; } } if (fila < ordem.length) setTimeout(carrega, 120); }
+setTimeout(carrega, 600);
+addEventListener("resize", ajusta); ajusta();
+
+function contaNum(el, k) { const alvo = +el.dataset.conta; el.textContent = Math.round(alvo * k).toLocaleString("pt-BR"); }
+const passos = [...document.querySelectorAll(".passo")];
+function progresso(p) {
+  $("#barra").style.width = (p * 100).toFixed(1) + "%";
+  desenha(Math.min(N - 1, Math.round(p * (N - 1))));
+  passos.forEach(el => {
+    const de = +el.dataset.de, ate = +el.dataset.ate, on = p >= de && p < ate;
+    el.classList.toggle("on", on);
+    const n = el.querySelector("[data-conta]");
+    if (n) contaNum(n, Math.min(1, Math.max(0, (p - de) / ((ate - de) * 0.5))) || (de === 0 ? 1 : 0));
+  });
+}
+
+/* ---------- movimento ---------- */
+function irPara(sel) { const el = $(sel); if (lenis) lenis.scrollTo(el, { offset: -70 }); else el.scrollIntoView({ behavior: "smooth" }); }
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => { const h = a.getAttribute("href"); if (h.length > 1 && $(h)) { e.preventDefault(); irPara(h); } }));
+
+const temGsap = window.gsap && window.ScrollTrigger;
+if (calmo || !temGsap) {
+  $("#fazenda").classList.add("estatica"); passos.forEach(el => el.classList.add("on"));
+  $("#casa303").classList.add("estatica");
+  document.querySelectorAll("#frase .p").forEach(s => s.classList.add("acesa"));
+  addEventListener("scroll", () => $("#topo").classList.toggle("solido", scrollY > 40), { passive: true });
+} else {
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.Lenis) {
+    lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+  }
+  // topo fica sólido depois da abertura
+  ScrollTrigger.create({ start: 40, onUpdate: s => $("#topo").classList.toggle("solido", s.scroll() > 40) });
+  // título: linhas sobem por trás de uma máscara, letra a letra
+  document.querySelectorAll("#titulo .ln > span").forEach(sp => { sp.innerHTML = [...sp.textContent].map(ch => `<span style="display:inline-block">${ch === " " ? "&nbsp;" : ch}</span>`).join(""); });
+  gsap.from("#titulo .ln > span > span", { yPercent: 115, rotate: 6, duration: 1.1, ease: "power4.out", stagger: 0.025, delay: 0.9 });
+  gsap.from(".abre .sub, .abre .busca, .abre .olho", { y: 30, duration: 1, ease: "power3.out", stagger: 0.12, delay: 1.4 });
+  // vídeo da abertura afasta devagar ao rolar
+  gsap.to("#hero-video", { scale: 1.15, yPercent: 8, ease: "none", scrollTrigger: { trigger: ".abre", start: "top top", end: "bottom top", scrub: true } });
+  // revelações suaves (partem de um estado visível)
+  document.querySelectorAll(".revela").forEach(el => gsap.from(el, { y: 50, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%" } }));
+  ScrollTrigger.batch(".card", { start: "top 90%", onEnter: b => gsap.from(b, { y: 60, rotateX: -8, duration: 1, ease: "power3.out", stagger: 0.12, overwrite: true }) });
+  // fazenda: rolagem controla o voo
+  ScrollTrigger.create({ trigger: "#fazenda", start: "top top", end: "bottom bottom", scrub: true, onUpdate: s => progresso(s.progress) });
+  progresso(0);
+  // casa: galeria corre na horizontal enquanto a seção fica presa
+  const trilhoCasa = $("#trilha-casa");
+  const distancia = () => Math.max(0, trilhoCasa.scrollWidth - innerWidth + 32);
+  gsap.to(trilhoCasa, { x: () => -distancia(), ease: "none", scrollTrigger: { trigger: "#casa303", start: "top top", end: () => "+=" + distancia(), pin: true, scrub: 0.6, invalidateOnRefresh: true } });
+  // manifesto acende palavra por palavra
+  const ps = document.querySelectorAll("#frase .p");
+  ScrollTrigger.create({ trigger: "#frase", start: "top 80%", end: "bottom 40%", scrub: true, onUpdate: s => ps.forEach((el, i) => el.classList.toggle("acesa", s.progress * ps.length > i + 0.2)) });
+  // rodapé: nome gigante desliza
+  gsap.fromTo(".rodape .gigante", { xPercent: 8 }, { xPercent: -10, ease: "none", scrollTrigger: { trigger: ".rodape", start: "top bottom", end: "bottom bottom", scrub: true } });
+}
+</script>
+
+</body></html>
