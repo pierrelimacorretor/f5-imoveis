@@ -1,10 +1,10 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="F5 Imóveis — compra, venda, locação e imóveis rurais em Palmas e no Tocantins. CRECI J-5434.">
-<meta property="og:title" content="F5 Imóveis — Mais que imóveis, realizamos histórias">
+<meta property="og:title" content="F5 Imóveis — Atualizando a sua vida">
 <meta property="og:description" content="Compra, venda, locação e imóveis rurais em Palmas e no Tocantins. CRECI J-5434.">
 <meta property="og:image" content="https://f5imoveistocantins.com.br/capa.jpg"><meta property="og:type" content="website">
 <link rel="icon" href="fotos/logo-f5-escuro.png"></head><body>
-<title>F5 Imóveis</title>
+<title>F5 Imóveis · Atualizando a sua vida</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
@@ -12,13 +12,13 @@
 /* Layout: filme de marca — abertura com voo de drone e cortina de cinema, faixa de chamadas, vitrine escura,
    história da fazenda guiada pela rolagem, galeria horizontal da casa, manifesto que acende palavra por palavra */
 :root{
-  --noite:#121011;       /* fundo, puxado do preto do logo */
-  --carvao:#1d1a1b;      /* preto do logo */
-  --placa:#24201f;       /* superfície dos cartões */
+  --noite:#06233a;       /* fundo: azul-marinho puxado do azul do logo */
+  --carvao:#041827;      /* azul bem escuro (texto sobre o azul) */
+  --placa:#0b3150;       /* superfície dos cartões */
   --azul:#1babe3;        /* azul do logo */
   --azul-luz:#6fd0f5;
   --branco:#f5f8fa;
-  --nevoa:#a9b4bc;       /* texto secundário */
+  --nevoa:#a8c3d6;       /* texto secundário */
   --linha:rgba(255,255,255,.10);
   --display:"Montserrat",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
   --texto:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -37,6 +37,7 @@ img,video,canvas{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;letter-spacing:-.01em}
 .wrap{max-width:1220px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .olho{font:700 12px/1 var(--display);letter-spacing:.26em;text-transform:uppercase;color:var(--azul)}
+.olho.slogan{display:inline-block;font-size:13px;color:var(--carvao);background:var(--azul);padding:9px 16px;border-radius:999px;box-shadow:0 8px 26px rgba(27,171,227,.35)}
 :focus-visible{outline:3px solid var(--azul);outline-offset:3px}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 24px;font:700 13px var(--display);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s}
@@ -47,7 +48,7 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 
 /* topo */
 .topo{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-.topo.solido{background:rgba(18,16,17,.86);backdrop-filter:blur(14px);border-color:var(--linha)}
+.topo.solido{background:rgba(6,35,58,.86);backdrop-filter:blur(14px);border-color:var(--linha)}
 .topo .wrap{display:flex;align-items:center;gap:22px;min-height:78px}
 .topo .marca img{height:46px;width:auto}
 .menu{display:flex;gap:24px;margin-left:auto;font:600 13px var(--display);letter-spacing:.08em;text-transform:uppercase}
@@ -65,8 +66,8 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 .abre{position:relative;min-height:min(100vh,900px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .abre video,.abre .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .abre::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(90deg,rgba(18,16,17,.88) 0%,rgba(18,16,17,.55) 45%,rgba(18,16,17,.1) 100%),
-  linear-gradient(0deg,rgba(18,16,17,1) 0%,rgba(18,16,17,.2) 38%,rgba(18,16,17,.35) 100%)}
+  linear-gradient(90deg,rgba(6,35,58,.88) 0%,rgba(6,35,58,.55) 45%,rgba(6,35,58,.1) 100%),
+  linear-gradient(0deg,rgba(6,35,58,1) 0%,rgba(6,35,58,.2) 38%,rgba(6,35,58,.35) 100%)}
 .cortina{position:absolute;left:0;right:0;height:50%;background:#000;z-index:5;pointer-events:none;animation:abre-cortina 1.5s cubic-bezier(.7,0,.2,1) .25s forwards}
 .cortina.c1{top:0}.cortina.c2{bottom:0}
 @keyframes abre-cortina{to{height:0}}
@@ -82,7 +83,7 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.04;
 @media (max-width:700px){.rolar{display:none}}
 
 /* busca */
-.busca{margin-top:34px;background:rgba(18,16,17,.62);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);border-radius:var(--raio);padding:16px;max-width:1000px}
+.busca{margin-top:34px;background:rgba(6,35,58,.62);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.14);border-radius:var(--raio);padding:16px;max-width:1000px}
 .abas{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
 .aba{border:0;background:transparent;color:var(--nevoa);font:700 12px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;cursor:pointer}
 .aba[aria-pressed="true"]{background:var(--azul);color:var(--carvao)}
@@ -114,13 +115,14 @@ section.bloco{padding-block:96px}
 .card:hover{border-color:rgba(27,171,227,.5);box-shadow:0 30px 60px rgba(0,0,0,.45),0 0 0 1px rgba(27,171,227,.25)}
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(27,171,227,.16),transparent 45%);opacity:0;transition:opacity .3s}
 .card:hover::after{opacity:1}
+.mais{grid-column:1/-1;justify-self:center;margin-top:8px}
 .card .img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
 .card .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .card:hover .img img{transform:scale(1.07)}
 .etq{position:absolute;top:14px;left:14px;display:flex;gap:6px}
 .etq span{font:800 10.5px var(--display);letter-spacing:.14em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:var(--azul);color:var(--carvao)}
-.etq span.esc{background:rgba(18,16,17,.8);color:#fff;backdrop-filter:blur(6px)}
-.fotos-n{position:absolute;right:12px;bottom:12px;font:700 11px var(--display);letter-spacing:.06em;color:#fff;background:rgba(18,16,17,.72);padding:6px 10px;border-radius:999px}
+.etq span.esc{background:rgba(6,35,58,.8);color:#fff;backdrop-filter:blur(6px)}
+.fotos-n{position:absolute;right:12px;bottom:12px;font:700 11px var(--display);letter-spacing:.06em;color:#fff;background:rgba(6,35,58,.72);padding:6px 10px;border-radius:999px}
 .card .corpo{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
 .preco{font:800 22px var(--display)}
 .preco small{font:600 13px var(--texto);color:var(--nevoa)}
@@ -160,7 +162,7 @@ section.bloco{padding-block:96px}
 .trilha-casa{display:flex;gap:22px;padding-left:max(16px,env(safe-area-inset-left,0px));width:max-content}
 .foto-casa{position:relative;flex:none;width:min(70vw,620px);aspect-ratio:4/5;border-radius:var(--raio);overflow:hidden;background:#000;margin:0}
 .foto-casa img{width:100%;height:100%;object-fit:cover}
-.foto-casa figcaption{position:absolute;left:16px;bottom:16px;font:800 13px var(--display);letter-spacing:.12em;text-transform:uppercase;background:rgba(18,16,17,.72);backdrop-filter:blur(6px);padding:9px 14px;border-radius:999px}
+.foto-casa figcaption{position:absolute;left:16px;bottom:16px;font:800 13px var(--display);letter-spacing:.12em;text-transform:uppercase;background:rgba(6,35,58,.72);backdrop-filter:blur(6px);padding:9px 14px;border-radius:999px}
 .foto-casa.capa{width:min(86vw,820px);aspect-ratio:auto;display:flex;flex-direction:column;justify-content:flex-end;padding:34px;background:linear-gradient(150deg,#1b3a4a,var(--placa));border:1px solid var(--linha)}
 .foto-casa.capa h3{font-size:clamp(30px,4vw,52px);font-weight:900;text-transform:uppercase}
 .foto-casa.capa ul{margin:16px 0 22px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;color:#d6dee3;font-size:15px}
@@ -266,7 +268,7 @@ section.bloco{padding-block:96px}
     <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="midia/hero-poster.jpg" aria-label="Voo de drone sobre lavouras, rio e silos no Tocantins"><source src="midia/hero.mp4" type="video/mp4"></video>
     <div class="cortina c1"></div><div class="cortina c2"></div>
     <div class="wrap">
-      <p class="olho">F5 Imóveis · Palmas – Tocantins · CRECI J-5434</p>
+      <p class="olho slogan">F5 · Atualizando a sua vida</p><p class="olho" style="margin-top:10px;color:var(--nevoa)">F5 Imóveis · Palmas – Tocantins · CRECI J-5434</p>
       <h1 id="titulo" style="margin-top:18px"><span class="ln"><span>Mais que</span></span><span class="ln"><span>imóveis,</span></span><span class="ln"><span class="azul">realizamos</span></span><span class="ln"><span class="azul">histórias.</span></span></h1>
       <p class="sub">Compra, venda e locação de imóveis urbanos e rurais no Tocantins, com assessoria completa e segurança em cada etapa.</p>
 
@@ -279,12 +281,12 @@ section.bloco{padding-block:96px}
         </div>
         <div class="campos">
           <div class="campo"><label for="f-tipo">Tipo de imóvel</label>
-            <select id="f-tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Apartamento</option><option>Lote</option><option>Chácara</option><option>Fazenda</option><option>Sala comercial</option></select></div>
+            <select id="f-tipo"><option value="">Todos os tipos</option><option>Casa</option><option>Apartamento</option><option>Lote</option><option>Chácara</option><option>Fazenda</option><option>Comercial</option></select></div>
           <div class="campo"><label for="f-regiao">Região</label>
-            <select id="f-regiao"><option value="">Todas as regiões</option><option>Plano Diretor Sul</option><option>Plano Diretor Norte</option><option>Graciosa / Orla</option><option>Taquaralto e Aurenys</option><option>Área rural</option></select></div>
+            <select id="f-regiao"><option value="">Todas as regiões</option><option>Plano Diretor Sul</option><option>Plano Diretor Norte</option><option>Taquaralto e Aurenys</option><option>Luzimangues</option><option>Condomínios no lago</option><option>Palmas</option><option>Área rural</option></select></div>
           <div class="campo"><label for="f-quartos">Quartos</label>
             <select id="f-quartos"><option value="0">Indiferente</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></div>
-          <div class="campo"><label for="f-cod">Código</label><input id="f-cod" placeholder="Ex.: F5-002" autocomplete="off"></div>
+          <div class="campo"><label for="f-cod">Código</label><input id="f-cod" placeholder="Ex.: CA0024" autocomplete="off"></div>
           <button class="btn btn-azul" type="submit">Buscar imóveis</button>
         </div>
       </form>
@@ -293,8 +295,8 @@ section.bloco{padding-block:96px}
   </section>
 
   <div class="faixa" aria-hidden="true"><div class="trilho">
-    <span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
-    <span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
+    <span>F5 · Atualizando a sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
+    <span>F5 · Atualizando a sua vida</span><span>Compra e venda</span><span>Locação</span><span>Imóveis rurais</span><span>Palmas – TO</span><span>Assessoria completa</span><span>Segurança em cada etapa</span>
   </div></div>
 
   <section class="bloco" id="imoveis">
@@ -329,7 +331,7 @@ section.bloco{padding-block:96px}
     </div>
     <div class="trilha-casa" id="trilha-casa">
       <div class="foto-casa capa">
-        <p class="olho">CÓD. F5-002</p>
+        <p class="olho">CÓD. CA0024</p>
         <h3 style="margin-top:12px">3 suítes · 300 m² construídos · lote de 490 m²</h3>
         <ul><li>Sala com pé-direito duplo</li><li>Suíte com closet</li><li>Mobília planejada</li><li>Piscina e jardim</li><li>Ambiente superior duplo</li><li>Calçada em pedra portuguesa</li></ul>
         <a class="btn btn-azul" id="zap-casa" href="#" target="_blank" rel="noopener" style="align-self:flex-start">Agendar visita</a>
@@ -403,13 +405,13 @@ section.bloco{padding-block:96px}
       <div><img src="fotos/logo-f5-escuro.png" alt="F5 Imóveis"><p style="margin-top:16px;max-width:36ch">Ideal para você. Real para a vida. Imóveis urbanos e rurais em Palmas e região.</p></div>
       <div>
         <h4>Fale com a F5</h4>
-        <p class="fone">(63) 98402-1137</p>
+        <p class="fone">(63) 98460-6653</p>
         <p><a href="#" id="link-zap" target="_blank" rel="noopener">Abrir conversa no WhatsApp</a></p>
         <p><a href="https://www.instagram.com/f5_imoveis/" target="_blank" rel="noopener">Instagram @f5_imoveis</a></p>
       </div>
       <div><h4>Onde estamos</h4><p>Palmas – Tocantins</p><p>Segunda a sexta, 8h às 18h<br>Sábado, 8h às 12h</p></div>
     </div>
-    <div class="base"><span>© 2026 F5 Imóveis · CRECI J-5434 · Palmas – TO</span><span>Pessoas, lares e grandes conquistas.</span></div>
+    <div class="base"><span>© 2026 F5 Imóveis · CRECI J-5434 · Palmas – TO</span><span>F5 · Atualizando a sua vida.</span></div>
   </div>
 </footer>
 
@@ -449,33 +451,1573 @@ section.bloco{padding-block:96px}
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 // WhatsApp da F5 (troque aqui se mudar o número)
-const ZAP = "5563984021137";
+const ZAP = "5563984606653";
 const zap = (msg) => "https://wa.me/" + ZAP + "?text=" + encodeURIComponent(msg);
 const $ = (s) => document.querySelector(s);
 const calmo = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Imóveis do site. Para adicionar um novo, copie um bloco e ajuste os dados e as fotos.
 const IMOVEIS = [
-  { cod: "F5-001", fin: "venda", rural: true, tipo: "Fazenda", regiao: "Área rural", destaque: "Exclusivo",
+  { cod: "FL0001", fin: "venda", rural: true, tipo: "Fazenda", regiao: "Área rural", destaque: "Exclusivo",
     titulo: "Fazenda Lagoa Canaã", local: "Tocantins", preco: "Sob consulta",
     specs: [["2.384", "hectares"], ["493", "alqueires"], ["1.500 ha", "de projeto"]],
     lista: ["2.384 hectares (493 alqueires)", "1.500 hectares de área de projeto", "Às margens do rio", "Lavouras formadas", "Estrutura de secadores, silos e galpões (negociada à parte)"],
     fotos: [1, 2, 3, 4, 5, 6, 7, 8].map(n => "fotos/fazenda-" + n + ".jpg") },
-  { cod: "F5-002", fin: "locacao", rural: false, tipo: "Casa", regiao: "Plano Diretor Sul", quartos: 3,
-    titulo: "Casa com piscina na 303 Sul", local: "303 Sul · Palmas", preco: "Sob consulta",
+  { cod: "CA0024", fin: "locacao", rural: false, tipo: "Casa", regiao: "Plano Diretor Sul", quartos: 3,
+    titulo: "Casa com piscina na 303 Sul", local: "303 Sul · Palmas", preco: "R$ 8.000", destaque: "Exclusivo",
     specs: [["3", "suítes"], ["300 m²", "construídos"], ["490 m²", "de lote"]],
     lista: ["3 quartos, todos suítes (1 com closet)", "Sala com pé-direito duplo", "Sala de jantar", "Ambiente superior duplo", "Cozinha", "Área de serviço e dependências domésticas", "Rica em mobília planejada (sala, quartos, cozinha e banheiros)", "Piscina e jardinagem", "Calçada em pedra portuguesa"],
     fotos: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => "fotos/casa303-" + n + ".jpg") }
 ];
+// Imóveis trazidos do site antigo (f5imoveistocantins.web2126.uni5.net), com os mesmos códigos
+const ANTIGOS = [
+{
+"cod": "AP0002",
+"fin": "venda",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Plano Diretor Sul",
+"quartos": 2,
+"destaque": "Lançamento",
+"titulo": "Lançamento Évero",
+"local": "106 Sul · Palmas",
+"preco": "Sob consulta",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"1",
+"vaga"
+]
+],
+"lista": [
+"Localizado na 106 sul",
+"Á 5 minutos de tudo oque você precisa",
+"2 Quartos (sendo 01 suíte",
+"1 Banheiro Social",
+"Sala de estar",
+"Cozinha",
+"Sacada Gourmet",
+"Piscina",
+"Coworking",
+"Garagem",
+"Beauty Care",
+"Espaço Kids",
+"Salão de Festas",
+"Academia",
+"Espaço Gourmet ( C/ Churrasqueira)"
+],
+"fotos": [
+"fotos/im/ap0002-01.jpg",
+"fotos/im/ap0002-02.jpg",
+"fotos/im/ap0002-03.jpg",
+"fotos/im/ap0002-04.jpg",
+"fotos/im/ap0002-05.jpg"
+],
+"status": "Breve lançamento"
+},
+{
+"cod": "AP0003",
+"fin": "venda",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Palmas",
+"quartos": 3,
+"destaque": "Lançamento",
+"titulo": "Lançamento Mirante da Serra",
+"local": "Palmas · TO",
+"preco": "Sob consulta",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"2",
+"suítes"
+],
+[
+"1",
+"vaga"
+]
+],
+"lista": [
+"Portaria com Guarita",
+"Varanda Gourmet",
+"Churrasqueira",
+"Play Ground",
+"Jardim Zen",
+"Pérgolas para leitura",
+"Descanso e relaxamento",
+"Espaço PET",
+"Bicicletário",
+"Piscina"
+],
+"fotos": [
+"fotos/im/ap0003-01.jpg",
+"fotos/im/ap0003-02.jpg"
+],
+"status": "Breve lançamento"
+},
+{
+"cod": "AP0004",
+"fin": "locacao",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Plano Diretor Sul",
+"quartos": 3,
+"destaque": null,
+"titulo": "JK Residence na 106 Sul",
+"local": "106 Sul · Palmas",
+"preco": "R$ 9.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"3",
+"suítes"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"12 ANDAR",
+"03 SUITES SENDO 1 COM CLOSET",
+"LAVABO",
+"SALA DE ESTAR",
+"SALA DE JANTAR INTEGRADA COM SACADA",
+"SACADA COM CORTINA DE VIDRO",
+"AREA DE SERVIÇO",
+"PISO DIFERENCIADO",
+"PLANEJADOS FUNCIONALLI",
+"FORRO REBAIXADO",
+"CORTINAS",
+"02 TVS",
+"CONDICIONADORES DE AR EM TODOS AMBIENTES",
+"CHURRASQUEIRA FISCHER",
+"FORNO INOX FISCHER",
+"MICROONDAS TRAMONTINA"
+],
+"fotos": [
+"fotos/im/ap0004-01.jpg",
+"fotos/im/ap0004-02.jpg",
+"fotos/im/ap0004-03.jpg",
+"fotos/im/ap0004-04.jpg",
+"fotos/im/ap0004-05.jpg",
+"fotos/im/ap0004-06.jpg",
+"fotos/im/ap0004-07.jpg",
+"fotos/im/ap0004-08.jpg",
+"fotos/im/ap0004-09.jpg",
+"fotos/im/ap0004-10.jpg",
+"fotos/im/ap0004-11.jpg"
+],
+"status": "Desocupado"
+},
+{
+"cod": "AP0005",
+"fin": "venda",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Plano Diretor Norte",
+"quartos": 2,
+"destaque": null,
+"titulo": "Residencial North 01",
+"local": "Palmas · TO",
+"preco": "R$ 100.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"vaga"
+],
+[
+"40 m²",
+"área total"
+]
+],
+"lista": [
+"Recém casados",
+"O imóvel tem 2 quartos, possui 1 banheiro, 1 sala e 1 vaga de garagem.",
+"Área total de 40m².",
+"Posição solar: Norte"
+],
+"fotos": [
+"fotos/im/ap0005-01.jpg",
+"fotos/im/ap0005-02.jpg",
+"fotos/im/ap0005-03.jpg",
+"fotos/im/ap0005-04.jpg",
+"fotos/im/ap0005-05.jpg",
+"fotos/im/ap0005-06.jpg",
+"fotos/im/ap0005-07.jpg"
+],
+"status": null
+},
+{
+"cod": "AP0006",
+"fin": "venda",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Taquaralto e Aurenys",
+"quartos": 2,
+"destaque": null,
+"titulo": "Residencial Lago Sul 1 – térreo",
+"local": "Aureny III · Palmas",
+"preco": "R$ 100.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"vaga"
+],
+[
+"42 m²",
+"área total"
+]
+],
+"lista": [
+"Residencial Lago Sul 1 – Apartamento Térreo",
+"Localização Estratégica: Entrada do Aureny 3, ao lado da Avenida Teotônio Segurado.",
+"Características do Imóvel:",
+"Sala de TV",
+"Cozinha com área de serviço integrada",
+"2 quartos aconchegantes",
+"1 banheiro",
+"Vaga de garagem disponível",
+"Infraestrutura de Segurança:",
+"Cerca elétrica",
+"Câmeras de monitoramento",
+"Controle de acesso individual na portaria",
+"Comodidades Próximas:",
+"Ponto de ônibus em frente ao condomínio",
+"Escola de tempo integral próxima",
+"6 km do Assaí Atacadista"
+],
+"fotos": [
+"fotos/im/ap0006-01.jpg",
+"fotos/im/ap0006-02.jpg",
+"fotos/im/ap0006-03.jpg",
+"fotos/im/ap0006-04.jpg",
+"fotos/im/ap0006-05.jpg",
+"fotos/im/ap0006-06.jpg",
+"fotos/im/ap0006-07.jpg",
+"fotos/im/ap0006-08.jpg",
+"fotos/im/ap0006-09.jpg"
+],
+"status": null
+},
+{
+"cod": "AP0007",
+"fin": "locacao",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Palmas",
+"quartos": 3,
+"destaque": null,
+"titulo": "Apartamento com 3 suítes, 115 m²",
+"local": "Palmas · TO",
+"preco": "R$ 6.500",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"3",
+"suítes"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Garantia locatícia: caução",
+"Posição solar: Sul"
+],
+"fotos": [
+"fotos/im/ap0007-01.jpg",
+"fotos/im/ap0007-02.jpg",
+"fotos/im/ap0007-03.jpg",
+"fotos/im/ap0007-04.jpg",
+"fotos/im/ap0007-05.jpg",
+"fotos/im/ap0007-06.jpg",
+"fotos/im/ap0007-07.jpg",
+"fotos/im/ap0007-08.jpg",
+"fotos/im/ap0007-09.jpg",
+"fotos/im/ap0007-10.jpg"
+],
+"status": null
+},
+{
+"cod": "AP0008",
+"fin": "locacao",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Palmas",
+"quartos": 2,
+"destaque": null,
+"titulo": "Residencial Mirante du Park",
+"local": "Palmas · TO",
+"preco": "R$ 3.800",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"1",
+"vaga"
+]
+],
+"lista": [
+"Residencial Mirante du Park",
+"65 m2",
+"2 quartos sendo 1 suite",
+"Sacada na suite com cortina de vidro",
+"Porcelanato",
+"Planejados em todos ambientes",
+"3 condicionares de ar",
+"13 andar",
+"Torre bem te vi",
+"Mobiliado"
+],
+"fotos": [
+"fotos/im/ap0008-01.jpg",
+"fotos/im/ap0008-02.jpg",
+"fotos/im/ap0008-03.jpg",
+"fotos/im/ap0008-04.jpg",
+"fotos/im/ap0008-05.jpg",
+"fotos/im/ap0008-06.jpg",
+"fotos/im/ap0008-07.jpg",
+"fotos/im/ap0008-08.jpg",
+"fotos/im/ap0008-09.jpg",
+"fotos/im/ap0008-10.jpg",
+"fotos/im/ap0008-11.jpg",
+"fotos/im/ap0008-12.jpg",
+"fotos/im/ap0008-13.jpg"
+],
+"status": "Ocupado"
+},
+{
+"cod": "AP0009",
+"fin": "locacao",
+"rural": false,
+"tipo": "Apartamento",
+"regiao": "Plano Diretor Sul",
+"quartos": 2,
+"destaque": null,
+"titulo": "Apartamento Palmeira Real",
+"local": "806 Sul · Palmas",
+"preco": "R$ 2.600",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"vaga"
+],
+[
+"44 m²",
+"área total"
+]
+],
+"lista": [
+"Conforto e Praticidade em Palmeira Real",
+"Descubra o seu novo lar no coração da 806 Sul, onde conforto e funcionalidade se encontram. Este apartamento bem distribuído oferece 2 dormitórios…",
+"Além disso, a localização privilegiada proporciona fácil acesso a comércios, serviços e opções de lazer, tornando sua rotina muito mais agradável. Venha…",
+"Garantia locatícia: caução"
+],
+"fotos": [
+"fotos/im/ap0009-01.jpg",
+"fotos/im/ap0009-02.jpg",
+"fotos/im/ap0009-03.jpg",
+"fotos/im/ap0009-04.jpg",
+"fotos/im/ap0009-05.jpg",
+"fotos/im/ap0009-06.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0003",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa na 1503 Sul",
+"local": "1503 Sul · Palmas",
+"preco": "R$ 450.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"10 x 28 m",
+"de lote"
+]
+],
+"lista": [
+"3/4 sendo 1 suíte",
+"Área gourmet"
+],
+"fotos": [
+"fotos/im/ca0003-01.jpg",
+"fotos/im/ca0003-02.jpg",
+"fotos/im/ca0003-03.jpg",
+"fotos/im/ca0003-04.jpg",
+"fotos/im/ca0003-05.jpg",
+"fotos/im/ca0003-06.jpg",
+"fotos/im/ca0003-07.jpg",
+"fotos/im/ca0003-08.jpg",
+"fotos/im/ca0003-09.jpg",
+"fotos/im/ca0003-10.jpg",
+"fotos/im/ca0003-11.jpg",
+"fotos/im/ca0003-12.jpg",
+"fotos/im/ca0003-13.jpg",
+"fotos/im/ca0003-14.jpg",
+"fotos/im/ca0003-15.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0008",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 6,
+"destaque": null,
+"titulo": "Casa com piscina na 603 Sul",
+"local": "603 Sul · Palmas",
+"preco": "R$ 950.000",
+"specs": [
+[
+"6",
+"quartos"
+],
+[
+"4",
+"suítes"
+],
+[
+"4",
+"vagas"
+]
+],
+"lista": [
+"Venha conhecer essa incrível casa de 2 pavimentos, perfeita para quem busca conforto e espaço!",
+"Localizada em um bairro tranquilo",
+"Quadra 603 sul , Área do imóvel 450m² , área Edificada 309,32m²",
+"Esta residência oferece:",
+"Sala de TV: Espaçosa e ideal para momentos de lazer.",
+"Cozinha: Bem equipada e funcional.",
+"Área de Serviço: Completa.",
+"6 Quartos: Incluindo 4 suítes, garantindo privacidade e conforto.",
+"3 Banheiros: Modernos e bem distribuídos.",
+"Garagem Coberta: Capacidade para 4 carros.",
+"Área Gourmet: Perfeita para receber amigos e família.",
+"Piscina: Um convite para os dias quentes.",
+"Poço Artesiano: Garantia de água abundante.",
+"Casa para Pet: Um espaço dedicado aos seus animais de estimação.",
+"Jardim: Bem cuidado e ideal para relaxar.",
+"Não perca esta oportunidade única de morar em uma casa que oferece tudo o que você precisa. Agende uma visita e surpreenda-se! ?"
+],
+"fotos": [
+"fotos/im/ca0008-01.jpg",
+"fotos/im/ca0008-02.jpg",
+"fotos/im/ca0008-03.jpg",
+"fotos/im/ca0008-04.jpg",
+"fotos/im/ca0008-05.jpg",
+"fotos/im/ca0008-06.jpg",
+"fotos/im/ca0008-07.jpg",
+"fotos/im/ca0008-08.jpg",
+"fotos/im/ca0008-09.jpg",
+"fotos/im/ca0008-10.jpg",
+"fotos/im/ca0008-11.jpg",
+"fotos/im/ca0008-12.jpg",
+"fotos/im/ca0008-13.jpg",
+"fotos/im/ca0008-14.jpg",
+"fotos/im/ca0008-15.jpg",
+"fotos/im/ca0008-16.jpg",
+"fotos/im/ca0008-17.jpg",
+"fotos/im/ca0008-18.jpg",
+"fotos/im/ca0008-19.jpg",
+"fotos/im/ca0008-20.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0009",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa de alto padrão na 507 Sul",
+"local": "507 Sul · Palmas",
+"preco": "R$ 950.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Casa à Venda de Alto Padrão",
+"Localizada na Quadra 507 Sul em Palmas - TO - 17 D",
+"3 suítes, sendo 1 suíte com closet",
+"Sala e cozinha com pé direito duplo",
+"Área de serviço",
+"Área de lazer completa, com piscina, churrasqueira e lavabo",
+"Garagem para dois carros",
+"Casa toda na laje",
+"Infraestrutura para ar condicionados já instalada",
+"Acabamento alto padrão; louças e metais da Deca, Docol e Tramontina",
+"Piso e revestimento da Embramaco, Porto Bello e Biancogress",
+"Pintura com tinta Suvinil",
+"Casa possui infraestrutura para instalação de energia solar",
+"Teto vinílico na área de lazer",
+"Luminotécnico diferenciado",
+"Calçada externa em pedra portuguesa"
+],
+"fotos": [
+"fotos/im/ca0009-01.jpg",
+"fotos/im/ca0009-02.jpg",
+"fotos/im/ca0009-03.jpg",
+"fotos/im/ca0009-04.jpg",
+"fotos/im/ca0009-05.jpg",
+"fotos/im/ca0009-06.jpg",
+"fotos/im/ca0009-07.jpg",
+"fotos/im/ca0009-08.jpg",
+"fotos/im/ca0009-09.jpg",
+"fotos/im/ca0009-10.jpg",
+"fotos/im/ca0009-11.jpg",
+"fotos/im/ca0009-12.jpg",
+"fotos/im/ca0009-13.jpg",
+"fotos/im/ca0009-14.jpg",
+"fotos/im/ca0009-15.jpg",
+"fotos/im/ca0009-16.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0010",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa com 3 suítes na 507 Sul",
+"local": "507 Sul · Palmas",
+"preco": "R$ 990.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"3",
+"suítes"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Localizada na Quadra 507 Sul em Palmas - TO - 17 D",
+"3 suítes, sendo 1 suíte com closet",
+"Sala e cozinha com pé direito duplo",
+"Área de serviço",
+"Área de lazer completa, com piscina, churrasqueira e lavabo",
+"Garagem para dois carros",
+"Casa toda na laje",
+"Infraestrutura para ar condicionados já instalada",
+"Acabamento alto padrão; louças e metais da Deca, Docol e Tramontina",
+"Piso e revestimento da Embramaco, PortoBello e Biancogress",
+"Pintura com tinta Suvinil",
+"Casa possui infraestrutura para instalação de energia solar",
+"Teto vinílico na área de lazer",
+"Luminotécnico diferenciado",
+"Calçada externa em pedra portuguesa",
+"Pergolado"
+],
+"fotos": [
+"fotos/im/ca0010-01.jpg",
+"fotos/im/ca0010-02.jpg",
+"fotos/im/ca0010-03.jpg",
+"fotos/im/ca0010-04.jpg",
+"fotos/im/ca0010-05.jpg",
+"fotos/im/ca0010-06.jpg",
+"fotos/im/ca0010-07.jpg",
+"fotos/im/ca0010-08.jpg",
+"fotos/im/ca0010-09.jpg",
+"fotos/im/ca0010-10.jpg",
+"fotos/im/ca0010-11.jpg",
+"fotos/im/ca0010-12.jpg",
+"fotos/im/ca0010-13.jpg",
+"fotos/im/ca0010-14.jpg",
+"fotos/im/ca0010-15.jpg",
+"fotos/im/ca0010-16.jpg",
+"fotos/im/ca0010-17.jpg",
+"fotos/im/ca0010-18.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0011",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Palmas",
+"quartos": 2,
+"destaque": null,
+"titulo": "Casa com 2 quartos, 70,60 m²",
+"local": "Palmas · TO",
+"preco": "R$ 350.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"1",
+"vaga"
+]
+],
+"lista": [
+"2 quartos"
+],
+"fotos": [
+"fotos/im/ca0011-01.jpg",
+"fotos/im/ca0011-02.jpg",
+"fotos/im/ca0011-03.jpg",
+"fotos/im/ca0011-04.jpg",
+"fotos/im/ca0011-05.jpg",
+"fotos/im/ca0011-06.jpg",
+"fotos/im/ca0011-07.jpg",
+"fotos/im/ca0011-08.jpg",
+"fotos/im/ca0011-09.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0013",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Palmas",
+"quartos": 2,
+"destaque": null,
+"titulo": "Casa em condomínio com piscina",
+"local": "Palmas · TO",
+"preco": "R$ 330.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"vaga"
+],
+[
+"70 m²",
+"área total"
+]
+],
+"lista": [
+"Casa em condomínio",
+"O imóvel -",
+"02 quartos",
+"Sala",
+"Cozinha",
+"Área de Serviço",
+"1 vaga de garagem",
+"70,60m²",
+"Área de lazer",
+"Piscina",
+"Espaço Gourmet com churrasqueira",
+"Playground"
+],
+"fotos": [
+"fotos/im/ca0013-01.jpg",
+"fotos/im/ca0013-02.jpg",
+"fotos/im/ca0013-03.jpg",
+"fotos/im/ca0013-04.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0014",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa na 1007 Sul",
+"local": "1007 Sul · Palmas",
+"preco": "Sob consulta",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Casa 1007 Sul – Espaço, Conforto e Sofisticação para Sua Família!",
+"Se você busca uma casa espaçosa, bem localizada e com excelente padrão de construção, essa é a sua oportunidade!",
+"Lote amplo de 360m² (12x30)",
+"146m² de área construída, projetada para oferecer conforto e funcionalidade",
+"2 salas, garantindo ambientes amplos e aconchegantes",
+"3 quartos, sendo 1 suíte espaçosa para seu descanso",
+"Cozinha gourmet, perfeita para receber amigos e familiares",
+"Quintal privativo, ideal para lazer ou futuras ampliações",
+"2 banheiros bem distribuídos",
+"Garagem espaçosa, garantindo praticidade no dia a dia",
+"Localização estratégica na 1007 Sul, em uma das regiões mais valorizadas da cidade, com fácil acesso a comércios, escolas e serviços.",
+"Agende sua visita agora e venha conhecer o seu novo lar!",
+"Posição solar: Leste"
+],
+"fotos": [
+"fotos/im/ca0014-01.jpg",
+"fotos/im/ca0014-02.jpg",
+"fotos/im/ca0014-03.jpg",
+"fotos/im/ca0014-04.jpg",
+"fotos/im/ca0014-05.jpg",
+"fotos/im/ca0014-06.jpg",
+"fotos/im/ca0014-07.jpg",
+"fotos/im/ca0014-08.jpg",
+"fotos/im/ca0014-09.jpg",
+"fotos/im/ca0014-10.jpg",
+"fotos/im/ca0014-11.jpg",
+"fotos/im/ca0014-12.jpg",
+"fotos/im/ca0014-13.jpg",
+"fotos/im/ca0014-14.jpg",
+"fotos/im/ca0014-15.jpg",
+"fotos/im/ca0014-16.jpg"
+],
+"status": "Habitado"
+},
+{
+"cod": "CA0016",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 2,
+"destaque": null,
+"titulo": "Casa na 110 Sul",
+"local": "110 Sul · Palmas",
+"preco": "R$ 430.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Lote: 360 m2",
+"2/4 sendo 1 suíte",
+"Banheiro social",
+"Garagem coberta",
+"Laje",
+"Quarto no fundo com banheiro",
+"Área edificada: 173 m2"
+],
+"fotos": [
+"fotos/im/ca0016-01.jpg",
+"fotos/im/ca0016-02.jpg",
+"fotos/im/ca0016-03.jpg",
+"fotos/im/ca0016-04.jpg",
+"fotos/im/ca0016-05.jpg",
+"fotos/im/ca0016-06.jpg",
+"fotos/im/ca0016-07.jpg",
+"fotos/im/ca0016-08.jpg",
+"fotos/im/ca0016-09.jpg",
+"fotos/im/ca0016-10.jpg",
+"fotos/im/ca0016-11.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0017",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 2,
+"destaque": null,
+"titulo": "Casa no Plano Diretor Sul",
+"local": "ASR-SE 65 · Palmas",
+"preco": "R$ 280.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Quadra ASR SE 65 Alameda 1, Plano Diretor Sul, Palmas / TO",
+"Posição solar: Leste"
+],
+"fotos": [
+"fotos/im/ca0017-01.jpg",
+"fotos/im/ca0017-02.jpg",
+"fotos/im/ca0017-03.jpg",
+"fotos/im/ca0017-04.jpg",
+"fotos/im/ca0017-05.jpg",
+"fotos/im/ca0017-06.jpg",
+"fotos/im/ca0017-07.jpg",
+"fotos/im/ca0017-08.jpg"
+],
+"status": "Alugado"
+},
+{
+"cod": "CA0018",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Taquaralto e Aurenys",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa no Aureny III",
+"local": "Aureny III · Palmas",
+"preco": "R$ 300.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"1",
+"vaga"
+]
+],
+"lista": [
+"Casa 3\\4 sendo 1 suíte com closet",
+"Telha de concreto, Blindex, toda projetada",
+"Contra esquina",
+"Avenida de pista dupla",
+"Área construída 90 m2"
+],
+"fotos": [
+"fotos/im/ca0018-01.jpg",
+"fotos/im/ca0018-02.jpg",
+"fotos/im/ca0018-03.jpg",
+"fotos/im/ca0018-04.jpg",
+"fotos/im/ca0018-05.jpg",
+"fotos/im/ca0018-06.jpg",
+"fotos/im/ca0018-07.jpg",
+"fotos/im/ca0018-08.jpg",
+"fotos/im/ca0018-09.jpg",
+"fotos/im/ca0018-10.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0019",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Palmas",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa no Setor Vale do Sol",
+"local": "Vale do Sol · Palmas",
+"preco": "R$ 320.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"1",
+"vaga"
+]
+],
+"lista": [
+"Excelente oportunidade no Setor Vale do Sol – R$ 320.000,00!",
+"Casa espaçosa e moderna com 3 quartos, sendo 1 suíte. A propriedade também inclui:",
+"1 sala ampla para momentos de lazer e conforto",
+"Cozinha funcional e bem planejada",
+"Garagem, garantindo sua comodidade",
+"Área de serviço prática e organizada",
+"Quintal, perfeito para aproveitar o ar livre e personalizar o espaço.",
+"Destaques do imóvel:",
+"Acabamento elegante em porcelanato, oferecendo durabilidade e sofisticação",
+"Portas de blindex, que trazem estilo e luz natural ao ambiente",
+"Área edificada: 136 m²",
+"Área total: 197 m².",
+"Essa é uma oportunidade incrível para quem busca conforto, qualidade de vida e um",
+"Ótimo custo-benefício. Entre em contato",
+"Para mais informações e agende sua visita!"
+],
+"fotos": [
+"fotos/im/ca0019-01.jpg",
+"fotos/im/ca0019-02.jpg",
+"fotos/im/ca0019-03.jpg",
+"fotos/im/ca0019-04.jpg",
+"fotos/im/ca0019-05.jpg",
+"fotos/im/ca0019-06.jpg",
+"fotos/im/ca0019-07.jpg",
+"fotos/im/ca0019-08.jpg",
+"fotos/im/ca0019-09.jpg",
+"fotos/im/ca0019-10.jpg",
+"fotos/im/ca0019-11.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0020",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Luzimangues",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa com piscina em Luzimangues",
+"local": "Jardim do Porto · Luzimangues",
+"preco": "R$ 315.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"2",
+"suítes"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Características Principais:",
+"Casa em luzimangues no Jardim do porto",
+"Piscina para relaxar e aproveitar os dias ensolarados.",
+"3 quartos, sendo 2 suítes para garantir privacidade e conforto.",
+"Espaço para escritório, perfeito para quem trabalha ou estuda em casa.",
+"Lavabo para maior comodidade.",
+"Sala espaçosa, ideal para momentos de convivência e lazer.",
+"Cozinha equipada com armários, prática e moderna.",
+"Churrasqueira para reunir amigos e familiares em momentos especiais.",
+"Espaço para 2 carros, com portão eletrônico para maior praticidade.",
+"Segurança:",
+"Cerca elétrica e alarme para sua tranquilidade.",
+"Habite-se já emitido, possibilitando financiamento imediato."
+],
+"fotos": [
+"fotos/im/ca0020-01.jpg",
+"fotos/im/ca0020-02.jpg",
+"fotos/im/ca0020-03.jpg",
+"fotos/im/ca0020-04.jpg",
+"fotos/im/ca0020-05.jpg",
+"fotos/im/ca0020-06.jpg",
+"fotos/im/ca0020-07.jpg",
+"fotos/im/ca0020-08.jpg",
+"fotos/im/ca0020-09.jpg",
+"fotos/im/ca0020-10.jpg",
+"fotos/im/ca0020-11.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0021",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Condomínios no lago",
+"quartos": 4,
+"destaque": null,
+"titulo": "Casa no Caribe Residence Resort",
+"local": "Caribe Residence · Palmas",
+"preco": "R$ 2.500.000",
+"specs": [
+[
+"4",
+"quartos"
+],
+[
+"4",
+"suítes"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Condomínio Caribe Residence Resort",
+"Lote com 600 m2",
+"Casa com 239,4 m2",
+"4 suítes plenas sendo 1 master com closet",
+"Porcelanato da casa 123x123",
+"Bancadas dos banheiros em quartzo branco.",
+"Sala ampla com pé direito duplo e sanca em gesso",
+"Pergolado lateral",
+"Cozinha com ilha e integrada ao gourmet com churrasqueira e espaço home",
+"Lavabo na área de lazer",
+"Lavanderia ampla com despensa integrada",
+"Estendal privativo",
+"Piscina em vinil com hidromassagem e prainha.",
+"Deck em porcelanato.",
+"Calçadas em pedra portuguesa com película hidrofugante",
+"Detalhe em porcelanato na fachada"
+],
+"fotos": [
+"fotos/im/ca0021-01.jpg",
+"fotos/im/ca0021-02.jpg",
+"fotos/im/ca0021-03.jpg",
+"fotos/im/ca0021-04.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0022",
+"fin": "locacao",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Norte",
+"quartos": 2,
+"destaque": null,
+"titulo": "Residencial Sublime na 208 Norte",
+"local": "208 Norte · Palmas",
+"preco": "R$ 2.500",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"suíte"
+],
+[
+"1",
+"vaga"
+]
+],
+"lista": [
+"Residencial Sublime na 208 norte",
+"Apto 2/4 sendo 1 suíte",
+"Garagem coberta",
+"Sala",
+"Cozinha",
+"Área de Serviço",
+"Quintal",
+"No condomínio tem piscina e área de gourmet",
+"Garantia locatícia: caução"
+],
+"fotos": [
+"fotos/im/ca0022-01.jpg",
+"fotos/im/ca0022-02.jpg",
+"fotos/im/ca0022-03.jpg",
+"fotos/im/ca0022-04.jpg",
+"fotos/im/ca0022-05.jpg",
+"fotos/im/ca0022-06.jpg",
+"fotos/im/ca0022-07.jpg",
+"fotos/im/ca0022-08.jpg",
+"fotos/im/ca0022-09.jpg",
+"fotos/im/ca0022-10.jpg",
+"fotos/im/ca0022-11.jpg",
+"fotos/im/ca0022-12.jpg",
+"fotos/im/ca0022-13.jpg",
+"fotos/im/ca0022-14.jpg",
+"fotos/im/ca0022-15.jpg",
+"fotos/im/ca0022-16.jpg",
+"fotos/im/ca0022-17.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0023",
+"fin": "locacao",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Palmas",
+"quartos": 2,
+"destaque": null,
+"titulo": "Casa com 2 quartos, 80 m²",
+"local": "Palmas · TO",
+"preco": "R$ 2.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"vaga"
+],
+[
+"80 m²",
+"área útil"
+]
+],
+"lista": [
+"Conforto e Praticidade em Cada Detalhe",
+"Descubra a sua nova casa, ideal para quem busca um lar acolhedor e funcional. Com 80m² de área privativa, este espaço oferece 2 dormitórios que garantem…",
+"Localizada em uma região acessível e tranquila, essa casa é perfeita para quem valoriza qualidade de vida. Aproveite a chance de viver em um ambiente que…",
+"Garantia locatícia: caução",
+"Posição solar: Norte"
+],
+"fotos": [
+"fotos/im/ca0023-01.jpg",
+"fotos/im/ca0023-02.jpg",
+"fotos/im/ca0023-03.jpg",
+"fotos/im/ca0023-04.jpg",
+"fotos/im/ca0023-05.jpg",
+"fotos/im/ca0023-06.jpg",
+"fotos/im/ca0023-07.jpg",
+"fotos/im/ca0023-08.jpg",
+"fotos/im/ca0023-09.jpg",
+"fotos/im/ca0023-10.jpg"
+],
+"status": null
+},
+{
+"cod": "CA0025",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Taquaralto e Aurenys",
+"quartos": 3,
+"destaque": null,
+"titulo": "Casa com piscina em Taquaralto",
+"local": "Taquaralto · Palmas",
+"preco": "R$ 430.000",
+"specs": [
+[
+"3",
+"quartos"
+],
+[
+"2",
+"suítes"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"CASA EM TAQUARALTO",
+"Lote 360 m2",
+"Area construida 250 m2",
+"Piscina",
+"Area gourmet climatizada",
+"Vaga de garagem para 02 carros cobertas",
+"Escritório",
+"Area de serviço",
+"Cozinha rica em planejados",
+"Sala de jantar",
+"Sala de estar",
+"3 quartos sendo 2 suites",
+"Banheiro social",
+"Energia Solar",
+"Toda mobiliada",
+"Aceita financiamento."
+],
+"fotos": [
+"fotos/im/ca0025-01.jpg",
+"fotos/im/ca0025-02.jpg",
+"fotos/im/ca0025-03.jpg",
+"fotos/im/ca0025-04.jpg",
+"fotos/im/ca0025-05.jpg",
+"fotos/im/ca0025-06.jpg",
+"fotos/im/ca0025-07.jpg",
+"fotos/im/ca0025-08.jpg",
+"fotos/im/ca0025-09.jpg",
+"fotos/im/ca0025-10.jpg",
+"fotos/im/ca0025-11.jpg",
+"fotos/im/ca0025-12.jpg",
+"fotos/im/ca0025-13.jpg",
+"fotos/im/ca0025-14.jpg",
+"fotos/im/ca0025-15.jpg",
+"fotos/im/ca0025-16.jpg",
+"fotos/im/ca0025-17.jpg",
+"fotos/im/ca0025-18.jpg",
+"fotos/im/ca0025-19.jpg",
+"fotos/im/ca0025-20.jpg"
+],
+"status": "Habitado"
+},
+{
+"cod": "CH0001",
+"fin": "venda",
+"rural": true,
+"tipo": "Chácara",
+"regiao": "Área rural",
+"quartos": 1,
+"destaque": null,
+"titulo": "Chácara individual beira lago",
+"local": "Entre Palmas e Porto Nacional",
+"preco": "R$ 550.000",
+"specs": [
+[
+"4.200 m²",
+"de terreno"
+],
+[
+"180 m²",
+"construídos"
+],
+[
+"33 m",
+"de praia"
+]
+],
+"lista": [
+"CHÁCARA INDIVIDUAL BEIRA LAGO",
+"Chácara individual na beira do lago a venda entre Palmas e Porto Nacional.",
+"28km da Rodoviária de Palmas até a chácara.",
+"1 fração ideal  com escritura.",
+"4.200m²",
+"33 metros de praia particular.",
+"22 metros de frente.",
+"Espaço gourmet com sauna ,banheiro e dispensa.",
+"Apartamentos com banheiro, cama Queen e duas de solteiros",
+"1 quarto de ferramentas",
+"1 almoxarifado",
+"São aproximadamente 180 metros construídos",
+"Pomar bem produtivo .",
+"Tudo irrigado por um poço",
+"Posição solar: Leste"
+],
+"fotos": [
+"fotos/im/ch0001-01.jpg",
+"fotos/im/ch0001-02.jpg",
+"fotos/im/ch0001-03.jpg",
+"fotos/im/ch0001-04.jpg",
+"fotos/im/ch0001-05.jpg",
+"fotos/im/ch0001-06.jpg",
+"fotos/im/ch0001-07.jpg",
+"fotos/im/ch0001-08.jpg",
+"fotos/im/ch0001-09.jpg",
+"fotos/im/ch0001-10.jpg",
+"fotos/im/ch0001-11.jpg"
+],
+"status": null
+},
+{
+"cod": "CO0001",
+"fin": "locacao",
+"rural": false,
+"tipo": "Comercial",
+"regiao": "Palmas",
+"quartos": 9,
+"destaque": null,
+"titulo": "Conjunto comercial, 360 m²",
+"local": "Palmas · TO",
+"preco": "R$ 6.000",
+"specs": [
+[
+"9",
+"quartos"
+],
+[
+"5",
+"suítes"
+],
+[
+"2",
+"vagas"
+]
+],
+"lista": [
+"Garantia locatícia: caução"
+],
+"fotos": [
+"fotos/im/co0001-01.jpg",
+"fotos/im/co0001-02.jpg",
+"fotos/im/co0001-03.jpg",
+"fotos/im/co0001-04.jpg",
+"fotos/im/co0001-05.jpg",
+"fotos/im/co0001-06.jpg",
+"fotos/im/co0001-07.jpg",
+"fotos/im/co0001-08.jpg",
+"fotos/im/co0001-09.jpg",
+"fotos/im/co0001-10.jpg"
+],
+"status": null
+},
+{
+"cod": "LO0001",
+"fin": "venda",
+"rural": false,
+"tipo": "Lote",
+"regiao": "Plano Diretor Sul",
+"quartos": 0,
+"destaque": null,
+"titulo": "Lote na 1304 Sul",
+"local": "1304 Sul · Palmas",
+"preco": "R$ 300.000",
+"specs": [
+[
+"12 x 25 m",
+"de lote"
+]
+],
+"lista": [
+"Lote na 1304 Sul"
+],
+"fotos": [
+"fotos/im/lo0001-01.jpg",
+"fotos/im/lo0001-02.jpg"
+],
+"status": null
+},
+{
+"cod": "LO0003",
+"fin": "venda",
+"rural": false,
+"tipo": "Lote",
+"regiao": "Condomínios no lago",
+"quartos": 0,
+"destaque": null,
+"titulo": "Lote no Paraíso das Águas",
+"local": "Paraíso das Águas",
+"preco": "R$ 100.000",
+"specs": [
+[
+"180 m²",
+"área total"
+]
+],
+"lista": [
+"Temos 2 unidades nessa configuração"
+],
+"fotos": [
+"fotos/im/lo0003-01.jpg",
+"fotos/im/lo0003-02.jpg"
+],
+"status": null
+},
+{
+"cod": "LO0004",
+"fin": "venda",
+"rural": false,
+"tipo": "Lote",
+"regiao": "Luzimangues",
+"quartos": 0,
+"destaque": "Lançamento",
+"titulo": "Lotes em Luzimangues – lançamento",
+"local": "Luzimangues · ao lado do Five Senses",
+"preco": "R$ 1.200 / m²",
+"specs": [
+[
+"250 a 600 m²",
+"lotes"
+]
+],
+"lista": [
+"LANÇAMENTO EM LUZIMANGUES",
+"Seu novo endereço está chegando em uma das regiões com maior potencial de valorização da região de Palmas.",
+"Localização privilegiada: em Luzimangues, ao lado do Five Senses Resort, em uma área que une natureza, lazer, sofisticação e potencial de crescimento.",
+"Lotes de aproximadamente 250 a 600 m²",
+"Uma oportunidade para quem busca construir, investir ou garantir um patrimônio em uma localização estratégica.",
+"LANÇAMENTO — condições especiais de abertura.",
+"Entre em contato e saiba mais sobre os lotes disponíveis."
+],
+"fotos": [
+"fotos/im/lo0004-01.jpg",
+"fotos/im/lo0004-02.jpg",
+"fotos/im/lo0004-03.jpg",
+"fotos/im/lo0004-04.jpg"
+],
+"status": null
+},
+{
+"cod": "LO0005",
+"fin": "venda",
+"rural": false,
+"tipo": "Lote",
+"regiao": "Condomínios no lago",
+"quartos": 0,
+"destaque": null,
+"titulo": "Lote no Condomínio Chalé",
+"local": "Condomínio Chalé · acesso ao lago",
+"preco": "R$ 120.000",
+"specs": [
+[
+"180 m²",
+"área total"
+]
+],
+"lista": [
+"Lote com 180m², localizado no condomínio residencial Chalé. Condomínio com acesso ao lago. São dois lotes com 180m² cada."
+],
+"fotos": [
+"fotos/im/lo0005-01.jpg",
+"fotos/im/lo0005-02.jpg"
+],
+"status": null
+},
+{
+"cod": "LO0006",
+"fin": "venda",
+"rural": false,
+"tipo": "Lote",
+"regiao": "Condomínios no lago",
+"quartos": 0,
+"destaque": "Lançamento",
+"titulo": "Lotes no Tahiti Resort",
+"local": "Tahiti Resort · beira do lago",
+"preco": "Sob consulta",
+"specs": [
+[
+"400 a 600 m²",
+"lotes"
+]
+],
+"lista": [
+"Tahiti Resort",
+"Lotes de 400 a 600 m2 na beira do lago",
+"Condomínio com uma das maiores área de lazer"
+],
+"fotos": [
+"fotos/im/lo0006-01.jpg",
+"fotos/im/lo0006-02.jpg",
+"fotos/im/lo0006-03.jpg"
+],
+"status": "Breve lançamento"
+},
+{
+"cod": "SO0001",
+"fin": "venda",
+"rural": false,
+"tipo": "Casa",
+"regiao": "Plano Diretor Sul",
+"quartos": 2,
+"destaque": null,
+"titulo": "Sobrado em condomínio na 804 Sul",
+"local": "804 Sul · Palmas",
+"preco": "R$ 280.000",
+"specs": [
+[
+"2",
+"quartos"
+],
+[
+"1",
+"vaga"
+],
+[
+"92 m²",
+"construídos"
+]
+],
+"lista": [
+"2/4",
+"Banheiro social e lavabo",
+"Sacada",
+"Cozinha",
+"1 vaga de garagem mÁrea de serviço",
+"Sala",
+"13,6 m2 de quintal",
+"92 m2 de área construída"
+],
+"fotos": [
+"fotos/im/so0001-01.jpg",
+"fotos/im/so0001-02.jpg",
+"fotos/im/so0001-03.jpg",
+"fotos/im/so0001-04.jpg",
+"fotos/im/so0001-05.jpg",
+"fotos/im/so0001-06.jpg",
+"fotos/im/so0001-07.jpg",
+"fotos/im/so0001-08.jpg"
+],
+"status": null
+}
+];
+ANTIGOS.sort((a, b) => b.fotos.length - a.fotos.length);
+IMOVEIS.push(...ANTIGOS);
 const nomeFin = { venda: "Venda", locacao: "Locação" };
 
 /* ---------- vitrine ---------- */
-let fin = "todos";
+let fin = "todos", limite = 9;
 function cartao(im) {
   const b = document.createElement("button");
   b.className = "card"; b.type = "button"; b.setAttribute("aria-label", im.titulo + ", ver detalhes");
   b.innerHTML = `<div class="img"><img src="${im.fotos[0]}" alt="" loading="lazy"><div class="etq"><span>${nomeFin[im.fin]}</span>${im.destaque ? `<span class="esc">${im.destaque}</span>` : ""}</div><span class="fotos-n">${im.fotos.length} fotos</span></div>
-    <div class="corpo"><div class="preco">${im.preco}${im.fin === "locacao" ? " <small>/ mês</small>" : ""}</div><h3>${im.titulo}</h3><div class="local">${im.local}</div>
+    <div class="corpo"><div class="preco">${im.preco}${im.fin === "locacao" && im.preco.startsWith("R$") ? " <small>/ mês</small>" : ""}</div><h3>${im.titulo}</h3><div class="local">${im.local}</div>
     <div class="specs">${im.specs.map(([n, t]) => `<span><b>${n}</b> ${t}</span>`).join("")}</div><span class="cod">CÓD. ${im.cod}</span></div>`;
   b.addEventListener("click", () => abrirFicha(im));
   inclina(b);
@@ -500,7 +2042,7 @@ function filtra() {
 function mostra() {
   const g = $("#grade"); g.textContent = "";
   const lista = filtra();
-  lista.forEach(im => g.appendChild(cartao(im)));
+  lista.slice(0, limite).forEach(im => g.appendChild(cartao(im)));
   if (!lista.length) {
     const v = document.createElement("div"); v.className = "vazio";
     v.innerHTML = 'Nenhum imóvel com esses filtros agora. <a href="' + zap("Olá, F5! Procuro um imóvel e não encontrei no site. Podem me ajudar?") + '" target="_blank" rel="noopener">Fale com a F5</a> que buscamos para você.';
@@ -509,14 +2051,20 @@ function mostra() {
   const a = document.createElement("div"); a.className = "card anuncie";
   a.innerHTML = '<p class="olho">Proprietário</p><h3>Seu imóvel pode estar aqui</h3><p>Anuncie com a F5 e alcance compradores e inquilinos em Palmas e região.</p><a class="btn btn-azul" href="#anuncie" style="align-self:flex-start">Anunciar imóvel</a>';
   g.appendChild(a);
+  if (lista.length > limite) {
+    const m = document.createElement("button"); m.type = "button"; m.className = "btn btn-azul mais";
+    m.textContent = "Ver mais imóveis (" + (lista.length - limite) + ")";
+    m.onclick = () => { limite += 9; mostra(); };
+    g.appendChild(m);
+  }
   $("#contagem").textContent = lista.length + (lista.length === 1 ? " imóvel encontrado" : " imóveis encontrados");
   if (window.ScrollTrigger) ScrollTrigger.refresh();
 }
-function marcaAba(v) { fin = v; document.querySelectorAll(".aba").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.fin === v))); mostra(); }
+function marcaAba(v) { fin = v; limite = 9; document.querySelectorAll(".aba").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.fin === v))); mostra(); }
 document.querySelectorAll(".aba").forEach(b => b.addEventListener("click", () => marcaAba(b.dataset.fin)));
 document.querySelectorAll("[data-ir]").forEach(a => a.addEventListener("click", () => marcaAba(a.dataset.ir)));
 $("#busca").addEventListener("submit", e => { e.preventDefault(); mostra(); irPara("#imoveis"); });
-["#f-tipo", "#f-regiao", "#f-quartos"].forEach(s => $(s).addEventListener("change", mostra));
+["#f-tipo", "#f-regiao", "#f-quartos"].forEach(s => $(s).addEventListener("change", () => { limite = 9; mostra(); }));
 
 /* ---------- janelas ---------- */
 let lenis = null;
@@ -538,7 +2086,7 @@ function abrirFicha(im) {
   atual = im;
   $("#ficha-cod").textContent = "CÓD. " + im.cod + " · " + nomeFin[im.fin];
   $("#ficha-titulo").textContent = im.titulo; $("#ficha-local").textContent = im.local;
-  $("#ficha-preco").innerHTML = im.preco + (im.fin === "locacao" ? " <small>/ mês</small>" : "");
+  $("#ficha-preco").innerHTML = im.preco + (im.fin === "locacao" && im.preco.startsWith("R$") ? " <small>/ mês</small>" : "");
   $("#ficha-specs").innerHTML = im.specs.map(([n, t]) => `<span><b>${n}</b> ${t}</span>`).join("");
   $("#ficha-lista").innerHTML = im.lista.map(l => `<li>${l}</li>`).join("");
   $("#ficha-zap").href = zap(`Olá, F5! Tenho interesse no imóvel ${im.cod} – ${im.titulo}. Pode me passar mais informações?`);
@@ -578,7 +2126,7 @@ $("#form-anuncie").addEventListener("submit", e => {
   const v = id => $(id).value.trim();
   const msg = `Olá, F5! Quero ${v("#a-fin").toLowerCase()} meu imóvel.\nNome: ${v("#a-nome")}\nTelefone: ${v("#a-fone")}\nTipo: ${v("#a-tipo")}\nLocal: ${v("#a-local") || "-"}\nSobre o imóvel: ${v("#a-obs") || "-"}`;
   const a = document.createElement("a"); a.href = zap(msg); a.target = "_blank"; a.rel = "noopener"; a.click();
-  $("#a-aviso").textContent = "Abrimos o WhatsApp com sua mensagem. Se não abriu, chame no (63) 98402-1137.";
+  $("#a-aviso").textContent = "Abrimos o WhatsApp com sua mensagem. Se não abriu, chame no (63) 98460-6653.";
 });
 $("#zap").href = zap("Olá, F5! Vim pelo site e quero falar sobre imóveis.");
 $("#link-zap").href = $("#zap").href;
