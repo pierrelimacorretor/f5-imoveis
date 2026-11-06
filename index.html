@@ -140,7 +140,7 @@ section.bloco{padding-block:96px}
 .categoria{padding-block:40px}
 .categoria h2{font-size:clamp(26px,3.2vw,40px);font-weight:800;letter-spacing:-.025em;margin-top:10px}
 .categoria .cab{margin-bottom:22px}
-.card{position:relative;background:var(--placa);border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha);display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;transform-style:preserve-3d;transition:box-shadow .3s,border-color .3s}
+.card{text-decoration:none;position:relative;background:var(--placa);border-radius:var(--raio);overflow:hidden;border:1px solid var(--linha);display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;font:inherit;color:inherit;transform-style:preserve-3d;transition:box-shadow .3s,border-color .3s}
 .card{box-shadow:0 8px 24px rgba(0,60,90,.08)}
 .card:hover{border-color:var(--vivo);box-shadow:0 24px 50px rgba(0,120,180,.22)}
 .card::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(0,180,255,.14),transparent 45%);opacity:0;transition:opacity .3s}
@@ -2063,12 +2063,12 @@ const nomeFin = { venda: "Venda", locacao: "Locação" };
 /* ---------- vitrine ---------- */
 let fin = "todos", limite = 8;
 function cartao(im) {
-  const b = document.createElement("button");
-  b.className = "card"; b.type = "button"; b.setAttribute("aria-label", im.titulo + ", ver detalhes");
+  // cada cartão abre a página própria do imóvel (imovel/<código>/)
+  const b = document.createElement("a");
+  b.className = "card"; b.href = "imovel/" + im.cod.toLowerCase() + "/"; b.setAttribute("aria-label", im.titulo + ", ver detalhes");
   b.innerHTML = `<div class="img"><img src="${im.fotos[0]}" alt="" loading="lazy"><div class="etq"><span>${nomeFin[im.fin]}</span>${im.destaque ? `<span class="esc">${im.destaque}</span>` : ""}</div><span class="fotos-n">${im.fotos.length} fotos</span></div>
     <div class="corpo"><div class="preco">${im.preco}${im.fin === "locacao" && im.preco.startsWith("R$") ? " <small>/ mês</small>" : ""}</div><h3>${im.titulo}</h3><div class="local">${im.local}</div>
     <div class="specs">${im.specs.map(([n, t]) => `<span><b>${n}</b> ${t}</span>`).join("")}</div><span class="cod">CÓD. ${im.cod}</span></div>`;
-  b.addEventListener("click", () => abrirFicha(im));
   inclina(b);
   return b;
 }
@@ -2170,8 +2170,8 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape") fechaJanelas();
   if (!$("#ficha").hidden) { if (e.key === "ArrowLeft") foto(idx - 1); if (e.key === "ArrowRight") foto(idx + 1); }
 });
-$("#ver-fazenda").onclick = () => abrirFicha(IMOVEIS[0]);
-$("#ver-casa").onclick = () => abrirFicha(IMOVEIS[1]);
+$("#ver-fazenda").onclick = () => { location.href = "imovel/fl0001/"; };
+$("#ver-casa").onclick = () => { location.href = "imovel/ca0024/"; };
 $("#ver-filme").onclick = () => {
   abreJanela("#filme"); pausaTrilha();
   const v = $("#filme-video"); v.play().catch(() => {});

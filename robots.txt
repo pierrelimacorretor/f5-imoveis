@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://f5imoveistocantins.com.br/sitemap.xml
