@@ -122,6 +122,18 @@ video{width:100%;border-radius:var(--raio);background:#000;aspect-ratio:16/9}
 .sb.zap{background:#0b8a4a}.sb.fb{background:#1877f2}.sb.cp{grid-column:1/-1;background:var(--fundo);color:var(--tinta);border:1px solid var(--linha)}
 .bc-bts{display:flex;gap:8px;align-items:center}
 .bc-share{width:46px;height:46px;border-radius:50%;border:0;background:var(--vivo);color:var(--tinta);display:grid;place-items:center;cursor:pointer}
+/* janela de compartilhar */
+.jan-share{position:fixed;inset:0;z-index:60;background:rgba(0,30,50,.55);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;animation:jsf .2s}
+.js-caixa{position:relative;width:100%;max-width:440px;background:#fff;border-radius:22px;padding:30px 26px 24px;box-shadow:0 30px 80px rgba(0,0,0,.35);border-top:6px solid var(--vivo);animation:jsc .25s cubic-bezier(.2,.9,.3,1.2)}
+.js-caixa h3{font-size:24px;font-weight:800;color:var(--azul)}.js-sub{margin:4px 0 20px;font-size:14px;color:var(--nevoa)}
+.js-x{position:absolute;top:14px;right:14px;width:38px;height:38px;border-radius:50%;border:0;background:var(--fundo);font-size:22px;cursor:pointer}
+.js-grade{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.op{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 15px "Montserrat";padding:13px 14px;border-radius:14px;border:1px solid var(--linha);background:#fff;color:var(--tinta);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.op:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,60,90,.12)}
+.op i{width:30px;height:30px;flex:none;border-radius:50%;display:grid;place-items:center;font:800 14px "Montserrat";font-style:normal;background:var(--fundo)}
+.op.zap i{background:#25d366;color:#fff}.op.fb i{background:#1877f2;color:#fff}.op.tw i{background:#111;color:#fff}.op.li i{background:#0a66c2;color:#fff}
+.js-mais{width:100%;margin-top:12px;padding:12px;border:0;border-radius:999px;background:var(--vivo);font:700 14px "Montserrat";cursor:pointer}
+@keyframes jsf{from{opacity:0}}@keyframes jsc{from{transform:translateY(20px) scale(.96);opacity:0}}
 </style></head><body>
 <header class="topo"><div class="wrap"><a class="marca" href="../../" aria-label="F5 Imóveis, início"><img src="../../fotos/logo-f5-preto-branco.png" alt="F5 Imóveis"></a>
 <nav class="menu"><a href="../../#imoveis">Comprar</a><a href="../../#imoveis">Alugar</a><a href="../../#anuncie">Anuncie</a><a href="../../#contato">Contato</a></nav>
@@ -160,6 +172,15 @@ video{width:100%;border-radius:var(--raio);background:#000;aspect-ratio:16/9}
 </main>
 <footer class="rodape"><div class="wrap"><img src="../../fotos/logo-f5-preto-branco.png" alt="F5 Imóveis"><p>F5 Imóveis · CRECI J-5434 · Palmas – TO · (63) 98460-6653</p><p><b>Atualizando sua vida.</b></p></div></footer>
 <div class="barra-cel"><div><small>Venda</small><b>Sob consulta</b></div><span class="bc-bts"><button class="bc-share" data-share aria-label="Compartilhar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button><a href="https://wa.me/5563984606653?text=Ol%C3%A1%2C%20F5%21%20Tenho%20interesse%20no%20im%C3%B3vel%20LO0006%20%E2%80%93%20Lotes%20no%20Tahiti%20Resort.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F%20https%3A//f5imoveistocantins.com.br/imovel/lo0006/" target="_blank" rel="noopener">WhatsApp</a></span></div>
+<div class="jan-share" id="jan-share" hidden><div class="js-caixa" role="dialog" aria-labelledby="js-tit"><button class="js-x" aria-label="Fechar">×</button>
+<h3 id="js-tit">Compartilhe este imóvel</h3><p class="js-sub">Lotes no Tahiti Resort · Cód. LO0006</p>
+<div class="js-grade"><button class="op" data-copia><i>🔗</i>Copiar link</button>
+<a class="op" href="mailto:?subject=Lotes%20no%20Tahiti%20Resort%20%E2%80%93%20F5%20Im%C3%B3veis&body=Lotes%20no%20Tahiti%20Resort%20%E2%80%93%20F5%20Im%C3%B3veis%20https%3A//f5imoveistocantins.com.br/imovel/lo0006/"><i>✉️</i>E-mail</a>
+<a class="op zap" href="https://wa.me/?text=Lotes%20no%20Tahiti%20Resort%20%E2%80%93%20F5%20Im%C3%B3veis%20https%3A//f5imoveistocantins.com.br/imovel/lo0006/" target="_blank" rel="noopener"><i>💬</i>WhatsApp</a>
+<a class="op fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//f5imoveistocantins.com.br/imovel/lo0006/" target="_blank" rel="noopener"><i>f</i>Facebook</a>
+<a class="op tw" href="https://twitter.com/intent/tweet?text=Lotes%20no%20Tahiti%20Resort%20%E2%80%93%20F5%20Im%C3%B3veis&url=https%3A//f5imoveistocantins.com.br/imovel/lo0006/" target="_blank" rel="noopener"><i>𝕏</i>Twitter</a>
+<a class="op li" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//f5imoveistocantins.com.br/imovel/lo0006/" target="_blank" rel="noopener"><i>in</i>LinkedIn</a></div>
+<button class="js-mais" data-nativo hidden>Mais opções…</button></div></div>
 <div class="visor" id="visor" hidden><button class="x" aria-label="Fechar">×</button><button class="seta e" aria-label="Foto anterior">‹</button><img alt=""><button class="seta d" aria-label="Próxima foto">›</button><span class="cont"></span></div>
 <script>
 const FOTOS = ["../../fotos/im/lo0006-01.jpg", "../../fotos/im/lo0006-02.jpg", "../../fotos/im/lo0006-03.jpg"];
@@ -194,8 +215,12 @@ if (sim) {
 }
 async function copia(b) { try { await navigator.clipboard.writeText(location.href); } catch (err) { prompt("Copie o link:", location.href); return; }
   const t = b.innerHTML; b.textContent = "Link copiado ✓"; setTimeout(() => b.innerHTML = t, 2000); }
-document.querySelectorAll("[data-share]").forEach(b => b.onclick = async () => {
-  if (navigator.share) { try { await navigator.share({ title: document.title, text: COD + " – F5 Imóveis", url: location.href }); } catch (err) {} } else copia(b); });
+const js = document.getElementById("jan-share"), fechaJs = () => { js.hidden = true; document.body.style.overflow = ""; };
+document.querySelectorAll("[data-share]").forEach(b => b.onclick = () => { js.hidden = false; document.body.style.overflow = "hidden"; });
+js.querySelector(".js-x").onclick = fechaJs; js.onclick = ev => { if (ev.target === js) fechaJs(); };
+document.addEventListener("keydown", ev => { if (ev.key === "Escape" && !js.hidden) fechaJs(); });
+const nat = js.querySelector("[data-nativo]"); if (navigator.share) nat.hidden = false;
+nat.onclick = async () => { try { await navigator.share({ title: document.title, text: COD + " – F5 Imóveis", url: location.href }); } catch (err) {} };
 document.querySelectorAll("[data-copia]").forEach(b => b.onclick = () => copia(b));
 </script>
 </body></html>
