@@ -3,7 +3,30 @@
 <meta property="og:title" content="F5 Imóveis — Atualizando sua vida">
 <meta property="og:description" content="Compra, venda, locação e imóveis rurais em Palmas e no Tocantins. CRECI J-5434.">
 <meta property="og:image" content="https://f5imoveistocantins.com.br/capa.jpg"><meta property="og:type" content="website">
-<link rel="icon" type="image/png" href="fotos/icone-f5.png?v=2"><link rel="apple-touch-icon" href="fotos/icone-f5-apple.png"></head><body>
+<link rel="icon" type="image/png" href="fotos/icone-f5.png?v=2"><link rel="apple-touch-icon" href="fotos/icone-f5-apple.png"><!-- Google tag (Google Ads) + conversão "Clique no WhatsApp" -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11354024502"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-11354024502');
+(function () {
+  var Z = '5563984606653', last = 0;
+  function conv(u) {
+    if (!u || String(u).indexOf(Z) < 0) return;
+    var n = Date.now(); if (n - last < 1500) return; last = n;
+    gtag('event', 'conversion', {'send_to': 'AW-11354024502/XwzvCN2zn7wdELbUgqYq'});
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]'); if (a) conv(a.href);
+  }, true);
+  var wo = window.open;
+  window.open = function (u) { conv(u); return wo.apply(window, arguments); };
+  var ac = HTMLAnchorElement.prototype.click;
+  HTMLAnchorElement.prototype.click = function () { if (!this.isConnected) conv(this.href); return ac.apply(this, arguments); };
+})();
+</script>
+</head><body>
 <title>F5 Imóveis · Atualizando sua vida</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
